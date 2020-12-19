@@ -1,0 +1,13 @@
+@function echantenote_color($color_2){
+    $color_2: darken(#f8e2df, 70%);
+    @return $color_2;
+}
+
+@function menuchic_color($color_3){
+    $color_3: darken($color_1, 30%);
+    @return $color_3;
+}
+@function menupalette_color($color_4){
+    $color_4: lighten($color_4, 10%);
+    @return $color_4;
+}

@@ -1,0 +1,27 @@
+{
+  "name": "orinoco-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "sass": "sass --watch ./sass/style.scss:./css/style.css",
+    "prefix": "postcss ./css/style.css --use autoprefixer -d ./css/prefixed/" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dasyx/Orinoco"
+  },
+  "author": "David Levast",
+  "license": "ISC",
+  "browserslist": "last 4 versions",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.18.3",
+    "bootstrap": "4.5.3",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.3.8",
+    "mongoose-unique-validator": "^2.0.2",
+    "uuid": "^3.3.2"
+  }
+}

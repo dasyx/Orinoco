@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Orinoco, ventes en ligne d'ours en peluches, meubles en bois & appareils photos vintage.">
+        <link rel="stylesheet" href="./css/style.css"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/13b8c41ab2.js" crossorigin="anonymous"></script>
+        <script src="javascript/index.js" async></script>
+        <link rel="icon" type="image/png" href="./images/favicon-16x16.png">
+        <title>Orinoco, un monde de douceur en peluches !</title>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <img src="./images/orinoco_logo2.png" alt="logo de l'entreprise"/>
+                <a href="index.html"><h1>Orinoco</h1></a>
+            </div>
+            <a href="panier.html"><i class="fas fa-shopping-basket"></i></a>
+        </header>
+        <div class="banniere">
+            <img src="./images/teddy-bear-toy.jpg" alt="l'ours en peluches élégant'"/>
+        </div>
+        <h2 class="choix_titre">Votre sélection personnalisable</h2>
+        <main class="conteneur">
+            <div class="selection">
+                <section class="ours" id="perso">
+                </section>
+                <form>
+                    <div><input type="text" id="name" placeholder="Quel est son nom ?"/></div>
+                    <div>
+                        <select id="fur">
+                            <option>Choisissez la couleur de sa fourrure</option>
+                            <option value="brown">Brun</option>
+                            <option value="black">Noir</option>
+                            <option value="white">Blanc</option>
+                        </select>  
+                    </div>
+                </form>  
+                   <div id="resume">
+                    Nom : <span id="res-name"></span><br />
+                    Fourrure : <span id="res-fur"></span><br />
+                  </div>
+            </div>
+        </main>
+    </body> 
+</html>

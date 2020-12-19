@@ -1,0 +1,21 @@
+@mixin auto_center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+@mixin flexOurs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px #000000 solid;
+    box-shadow: 4px 0px 8px 5px #cdcdcd80;
+
+    @media screen and (min-width: 320px) and (max-width: 425px) {
+        width: 300px;
+        height: 380px;
+    }
+    @media screen and (min-width: 426px) and (max-width: 2561px) {
+        width: 380px;
+        height: 420px;
+    }
+ }
