@@ -46,7 +46,7 @@ teddies.forEach((teddy) => {
     produitContenant.setAttribute("class", "produit");
     produitIllustration.setAttribute("class", "produit_illustration");
     produitPhoto.setAttribute("src", teddy.imageUrl);
-    produitPhoto.setAttribute("alt", "Photo de l'ours en peluche");
+    produitPhoto.setAttribute("alt", "photo ours peluches");
     produitDescription.setAttribute("class", "produit_description");
     produitNom.setAttribute("class", "produit_name");
     produitPrix.setAttribute("class", "produit_price");
@@ -64,7 +64,7 @@ teddies.forEach((teddy) => {
     /* Contenu des balises index HTML */
     produitNom.textContent = teddy.name;
     produitPrix.textContent = teddy.price / 100 + " euros";
-    produitAction.textContent = "En savoir plus";
+    produitAction.textContent = "Ajoutez-moi !";
   });
 }
 

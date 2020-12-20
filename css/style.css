@@ -66,15 +66,24 @@ header h1 {
 
 .conteneur {
   display: flex;
-  flex-flow: row wrap;
   justify-content: center;
   margin-top: 80px;
 }
 
 .banniere img {
   width: 100%;
-  height: 25em;
+  height: 40em;
   border-bottom: 2px solid black;
+}
+@media screen and (min-width: 320px) and (max-width: 1024px) {
+  .banniere img {
+    height: 25em;
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 2560px) {
+  .banniere img {
+    height: 50em;
+  }
 }
 
 .choix_titre {
@@ -92,6 +101,8 @@ header h1 {
   align-items: center;
   border: 2px #000000 solid;
   box-shadow: 4px 0px 8px 5px #cdcdcd80;
+  margin-left: 20px;
+  margin-right: 20px;
   margin-bottom: 60px;
   padding: 30px;
   overflow: hidden;
@@ -122,6 +133,11 @@ header h1 {
 .produit_description {
   font-size: 1.2rem;
 }
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .produit_description {
+    font-size: 1rem;
+  }
+}
 
 .produit_description h3 {
   padding-bottom: 50px;
@@ -133,6 +149,12 @@ header h1 {
 
 .produit_description p {
   padding-bottom: 50px;
+}
+
+#teddy_list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
 }
 
 /*# sourceMappingURL=style.css.map */
