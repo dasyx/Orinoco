@@ -56,7 +56,6 @@ teddies.forEach((teddy) => {
     listeProduit.appendChild(produitContenant);
     produitContenant.appendChild(produitIllustration);
     produitIllustration.appendChild(produitPhoto);
-    produitContenant.appendChild(produitPhoto);
     produitContenant.appendChild(produitDescription);
     produitDescription.appendChild(produitNom);
     produitDescription.appendChild(produitPrix);
