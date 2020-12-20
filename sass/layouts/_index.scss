@@ -11,13 +11,32 @@
     background: $orinoco_background;
     font-family: "Merienda", sans-serif;
 }
-.ours {
+.produit {
     @include flexOurs;
     margin-right: 20px;
     margin-bottom: 60px;
     margin-left: 10px;
+    padding: 50px;
     overflow: hidden;
 }
-.ours img {
+.produit img {
     height: auto;
+}
+.produit_description {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 1.4rem;
+}
+.produit_description h3 {
+    padding-bottom: 50px;
+    background: $orinoco_background;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.5em;
+}
+.produit_description p {
+    padding-bottom: 50px;
 }

@@ -34,32 +34,33 @@ let listeProduit = document.getElementById("teddy_list");
 /*============================*/
 
 teddies.forEach((teddy) => {
-    let produitContenant = document.createElement("section");
-    let produitIllustration = document.createElement("div");
-    let produitElement = document.createElement("div");
+    let produitContenant = document.createElement("section");
+    let produitIllustration = document.createElement("div");
+    let produitDescription = document.createElement("div");
     let produitPhoto = document.createElement("img");
     let produitNom = document.createElement("h3");
     let produitPrix = document.createElement("p");
     let produitAction = document.createElement("a");
 
     /*Ajout des attributs au balise index HTML */
-    produitContenant.setAttribute("class", "produit_contenant");
-    produitIllustration.setAttribute("class", "produit_illustration");
+    produitContenant.setAttribute("class", "produit");
+    produitIllustration.setAttribute("class", "produit_illustration");
     produitPhoto.setAttribute("src", teddy.imageUrl);
     produitPhoto.setAttribute("alt", "Photo de l'ours en peluche");
-    produitElement.setAttribute("class", "produit_element");
-    produitNom.setAttribute("class", "produit_nom");
-    produitPrix.setAttribute("class", "produit_prix");
+    produitDescription.setAttribute("class", "produit_description");
+    produitNom.setAttribute("class", "produit_name");
+    produitPrix.setAttribute("class", "produit_price");
     produitAction.setAttribute("href", "produit.html?id=" + teddy._id);
 
     /* Agencement des éléments index HTML */
     listeProduit.appendChild(produitContenant);
     produitContenant.appendChild(produitIllustration);
     produitIllustration.appendChild(produitPhoto);
-    produitContenant.appendChild(produitElement);
-    produitElement.appendChild(produitNom);
-    produitElement.appendChild(produitPrix);
-    produitElement.appendChild(produitAction);
+    produitContenant.appendChild(produitPhoto);
+    produitContenant.appendChild(produitDescription);
+    produitDescription.appendChild(produitNom);
+    produitDescription.appendChild(produitPrix);
+    produitDescription.appendChild(produitAction);
 
     /* Contenu des balises index HTML */
     produitNom.textContent = teddy.name;
@@ -72,4 +73,16 @@ let idTeddyBears = "";
 async function detailTeddies() {
   idTeddyBears = location.search.substring(4);
   const detailTeddies = await getAllTeddies()
+}
+let hover = document.getElementById('teddy_list');
+let bearPrint = document.getElementById('select');
+
+hover.addEventListener('mouseover', mouseOver);
+hover.addEventListener('mouseout', mouseOut);
+
+function mouseOver(){
+  bearPrint.textContent = "Cliquez sur l'ourson pour l'ajouter à votre sélection"
+}
+function mouseOut(){
+  bearPrint.textContent = ""
 }
