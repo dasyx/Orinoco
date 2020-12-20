@@ -25,7 +25,7 @@ getAllBears = () => {
 async function getAllBears (url) {
     let response = await fetch(url);
     let teddies = await response.json();
-    console.log(getAllBears);
+    console.log(teddies);
 
 //Lien avec la page index HTML
 
@@ -68,11 +68,6 @@ teddies.forEach((teddy) => {
   });
 }
 
-let idTeddyBears = "";
-async function detailTeddies() {
-  idTeddyBears = location.search.substring(4);
-  const detailTeddies = await getAllTeddies()
-}
 let hover = document.getElementById('teddy_list');
 let bearPrint = document.getElementById('select');
 
