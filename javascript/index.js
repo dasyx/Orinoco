@@ -6,14 +6,9 @@ getAllBears = () => {
     return new Promise((resolve) => {
       let request = new XMLHttpRequest();
       request.onreadystatechange = function () {
-        if (
-          this.readyState == XMLHttpRequest.DONE &&
-          this.status >= 200 &&
-          this.status < 400
-        ) {
+        if (this.readyState == XMLHttpRequest.DONE && this.status >= 200) {
           resolve(JSON.parse(this.responseText));
           console.log("fonction OK");
-        } else {
     }
 };
     request.open('GET', "http://localhost:3000/api/teddies");
