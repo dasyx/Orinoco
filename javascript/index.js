@@ -81,7 +81,7 @@ teddies.forEach((teddy) => {
   });
 }
 // Ecoute d'événement au passage de la souris sur le titre h1
-let hover = document.getElementById('teddy_list');
+let hover = document.getElementById('hover');
 let bearPrint = document.getElementById('select');
 
 hover.addEventListener('mouseover', mouseOver);

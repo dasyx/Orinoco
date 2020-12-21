@@ -7,7 +7,7 @@ header {
     justify-content: space-between;
     position: fixed;
     padding: 10px;
-    color: #261624;
+    color: $orinoco_color;
     border-bottom: 2px solid black;
     background-color: #f3e9f1;
     z-index: 1;
@@ -22,12 +22,12 @@ header img {
 header a {
   align-self: center;
   text-decoration: none;
-  color: #4b4141;
-  font-family: 'Finger Paint', cursive;
+  color: $orinoco_color_alt;
+  font-family: $orinoco_font_main;
 }
 header h1 {
   font-weight: 900;
   margin: 0;
-  color: #4b4141;
+  color: $orinoco_color_alt;
 }
 

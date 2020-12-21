@@ -1,0 +1,35 @@
+footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    /*avec la position: fixed, le footer sera visible même au scrolling*/
+    bottom: 0;
+    background-color: #f3e9f1;
+    border-top: 2px solid black;
+    font-family: $orinoco_font_main;
+}
+.foot__gauche {
+    &:hover {
+    /*ci-dessous la mixin du tremblement des éléments du footer*/
+    }
+}
+.foot__droite {
+    &:hover {
+    /*ci-dessous la mixin du tremblement des éléments du footer*/
+    }
+}
+
+.foot__gauche, .foot__droite {
+    margin: 0.3em 1.5em;
+    text-decoration: none;
+    color: $orinoco_color_alt;
+}
+@media screen and (max-width: 450px) {
+    footer {
+        flex-direction: column;
+    }
+}
