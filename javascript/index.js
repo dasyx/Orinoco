@@ -16,75 +16,71 @@ getAllBears = () => {
         } else {
     }
 };
-    request.open('GET', "http://localhost:3000/api/teddies" + idTeddyBears);
+    request.open('GET', "http://localhost:3000/api/teddies");
     request.send();
     });
 };
-let idTeddyBears = "";
-async function detailTeddies() {
-  idTeddyBears = location.search.substring(4);
-  const detailTeddies = await getAllBears()
-}
+
 //Récupère tous les oursons
 async function getAllBears (url) {
     let response = await fetch(url);
     let teddies = await response.json();
     console.log(teddies);
 
-//Lien avec la page index HTML
+//Lien avec la page index.html
 
 let listeProduit = document.getElementById("teddy_list");
 
 /*============================*/
 
 teddies.forEach((teddy) => {
-    let produitContenant = document.createElement("section");
-    let produitIllustration = document.createElement("div");
-    let produitDescription = document.createElement("div");
-    let produitPhoto = document.createElement("img");
-    let produitNom = document.createElement("h3");
-    let produitPrix = document.createElement("p");
-    let produitAction = document.createElement("a");
+    let prodCont = document.createElement("section");
+    let prodImage = document.createElement("div");
+    let prodText = document.createElement("div");
+    let prodPhoto = document.createElement("img");
+    let prodName = document.createElement("h3");
+    let prodPrice = document.createElement("p");
+    let prodLink = document.createElement("a");
 
-    /*Ajout des attributs au balise index HTML */
-    produitContenant.setAttribute("class", "produit");
-    produitIllustration.setAttribute("class", "produit_illustration");
-    produitPhoto.setAttribute("src", teddy.imageUrl);
-    produitPhoto.setAttribute("alt", "photo ours peluches");
-    produitDescription.setAttribute("class", "produit_description");
-    produitNom.setAttribute("class", "produit_name");
-    produitPrix.setAttribute("class", "produit_price");
-    produitAction.setAttribute("href", "produit.html?id=" + teddy._id);
+    //Ajout des attributs au balise index HTML 
+    prodCont.setAttribute("class", "produit");
+    prodImage.setAttribute("class", "produit_illustration");
+    prodPhoto.setAttribute("src", teddy.imageUrl);
+    prodPhoto.setAttribute("alt", "photo ours peluches");
+    prodText.setAttribute("class", "produit_description");
+    prodName.setAttribute("class", "produit_name");
+    prodPrice.setAttribute("class", "produit_price");
+    prodLink.setAttribute("href", "produit.html?id=" + teddy._id);
 
-    /* Agencement des éléments index HTML */
-    listeProduit.appendChild(produitContenant);
-    produitContenant.appendChild(produitIllustration);
-    produitIllustration.appendChild(produitPhoto);
-    produitContenant.appendChild(produitDescription);
-    produitDescription.appendChild(produitNom);
-    produitDescription.appendChild(produitPrix);
-    produitDescription.appendChild(produitAction);
+    // Agencement des éléments index HTML
+    listeProduit.appendChild(prodCont);
+    prodCont.appendChild(prodImage);
+    prodImage.appendChild(prodPhoto);
+    prodCont.appendChild(prodText);
+    prodText.appendChild(prodName);
+    prodText.appendChild(prodPrice);
+    prodText.appendChild(prodLink);
 
-    /* Contenu des balises index HTML */
-    produitNom.textContent = teddy.name;
-    produitPrix.textContent = teddy.price / 100 + " euros";
-    produitAction.textContent = "Ajoutez-moi !";
+    // Contenu des balises index HTML 
+    prodName.textContent = teddy.name;
+    prodPrice.textContent = teddy.price / 100 + " euros";
+    prodLink.textContent = "Ajoutez-moi !";
 
-    /* Une instruction pour vérifier quelle image pour quel article */
+    // Une instruction pour vérifier quelle image pour quel article 
     if(teddy.name === "Norbert"){
-      produitPhoto.setAttribute("src", "./images/teddy_1.webp");
+      prodPhoto.setAttribute("src", "./images/teddy_1.webp");
     } else if(teddy.name === "Arnold"){
-      produitPhoto.setAttribute("src", "./images/teddy_2.webp");
+      prodPhoto.setAttribute("src", "./images/teddy_2.webp");
     } else if(teddy.name === "Lenny and Carl"){
-      produitPhoto.setAttribute("src", "./images/teddy_3.webp");
+      prodPhoto.setAttribute("src", "./images/teddy_3.webp");
     } else if(teddy.name === "Gustav"){
-      produitPhoto.setAttribute("src", "./images/teddy_4.webp");
+      prodPhoto.setAttribute("src", "./images/teddy_4.webp");
     } else if(teddy.name === "Garfunkel"){
-      produitPhoto.setAttribute("src", "./images/teddy_5.webp");
+      prodPhoto.setAttribute("src", "./images/teddy_5.webp");
     }
   });
 }
-/* Ecoute d'événement au passage de la souris sur le titre h1 */
+// Ecoute d'événement au passage de la souris sur le titre h1
 let hover = document.getElementById('teddy_list');
 let bearPrint = document.getElementById('select');
 
@@ -97,3 +93,9 @@ function mouseOver(){
 function mouseOut(){
   bearPrint.textContent = ""
 }
+
+//Lien avec la page presentation.html
+
+let listeProduit = document.getElementById("teddy_choice");
+
+/*==================================*/

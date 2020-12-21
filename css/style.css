@@ -130,6 +130,12 @@ header h1 {
 
 .produit img {
   height: auto;
+  width: 420px;
+}
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .produit img {
+    width: 270px;
+  }
 }
 
 .produit_description {
