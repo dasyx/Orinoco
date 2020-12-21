@@ -12,7 +12,7 @@ getAllBears = () => {
           this.status < 400
         ) {
           resolve(JSON.parse(this.responseText));
-          console.log("Connecté");
+          console.log("fonction OK");
         } else {
     }
 };
@@ -20,7 +20,11 @@ getAllBears = () => {
     request.send();
     });
 };
-
+let idTeddyBears = "";
+async function detailTeddies() {
+  idTeddyBears = location.search.substring(4);
+  const detailTeddies = await getAllBears()
+}
 //Récupère tous les oursons
 async function getAllBears (url) {
     let response = await fetch(url);
@@ -65,9 +69,22 @@ teddies.forEach((teddy) => {
     produitNom.textContent = teddy.name;
     produitPrix.textContent = teddy.price / 100 + " euros";
     produitAction.textContent = "Ajoutez-moi !";
+
+    /* Une instruction pour vérifier quelle image pour quel article */
+    if(teddy.name === "Norbert"){
+      produitPhoto.setAttribute("src", "./images/teddy_1.webp");
+    } else if(teddy.name === "Arnold"){
+      produitPhoto.setAttribute("src", "./images/teddy_2.webp");
+    } else if(teddy.name === "Lenny and Carl"){
+      produitPhoto.setAttribute("src", "./images/teddy_3.webp");
+    } else if(teddy.name === "Gustav"){
+      produitPhoto.setAttribute("src", "./images/teddy_4.webp");
+    } else if(teddy.name === "Garfunkel"){
+      produitPhoto.setAttribute("src", "./images/teddy_5.webp");
+    }
   });
 }
-
+/* Ecoute d'événement au passage de la souris sur le titre h1 */
 let hover = document.getElementById('teddy_list');
 let bearPrint = document.getElementById('select');
 

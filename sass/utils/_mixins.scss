@@ -5,10 +5,11 @@
 }
 @mixin flexOurs {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     border: 2px #000000 solid;
-    box-shadow: 4px 0px 8px 5px #cdcdcd80;
+    box-shadow: 4px 0px 8px 5px #b6b2b280;
     margin-left: 20px;
     margin-right: 20px;
 
