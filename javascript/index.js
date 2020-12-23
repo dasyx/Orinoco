@@ -2,7 +2,7 @@
 getAllBears("http://localhost:3000/api/teddies")
 
 
-getAllBears = () => {
+function getAllBears(url){
     return new Promise((resolve) => {
       let request = new XMLHttpRequest();
       request.onreadystatechange = function () {
@@ -60,37 +60,5 @@ teddies.forEach((teddy) => {
     prodName.textContent = teddy.name;
     prodPrice.textContent = teddy.price / 100 + " euros";
     prodLink.textContent = "Ajoutez-moi !";
-
-    // Une instruction pour vérifier quelle image pour quel article 
-    if(teddy.name === "Norbert"){
-      prodPhoto.setAttribute("src", "./images/teddy_1.webp");
-    } else if(teddy.name === "Arnold"){
-      prodPhoto.setAttribute("src", "./images/teddy_2.webp");
-    } else if(teddy.name === "Lenny and Carl"){
-      prodPhoto.setAttribute("src", "./images/teddy_3.webp");
-    } else if(teddy.name === "Gustav"){
-      prodPhoto.setAttribute("src", "./images/teddy_4.webp");
-    } else if(teddy.name === "Garfunkel"){
-      prodPhoto.setAttribute("src", "./images/teddy_5.webp");
-    }
   });
 }
-// Ecoute d'événement au passage de la souris sur le titre h1
-let hover = document.getElementById('hover');
-let bearPrint = document.getElementById('select');
-
-hover.addEventListener('mouseover', mouseOver);
-hover.addEventListener('mouseout', mouseOut);
-
-function mouseOver(){
-  bearPrint.textContent = "Cliquez sur l'ourson pour l'ajouter à votre sélection"
-}
-function mouseOut(){
-  bearPrint.textContent = ""
-}
-
-//Lien avec la page presentation.html
-
-let listeProduit = document.getElementById("teddy_choice");
-
-/*==================================*/

@@ -203,13 +203,98 @@ header h1 {
   background-color: #8b54c7;
 }
 
-#teddy_list {
+.teddy_list {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
 }
 
-.conteneur {
+.choix {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px #000000 solid;
+  box-shadow: 4px 0px 8px 5px #b6b2b280;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: #fff;
+  border-radius: 20px 20px;
+  margin-bottom: 60px;
+  padding: 30px;
+}
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .choix {
+    width: 300px;
+    height: 450px;
+  }
+}
+@media screen and (min-width: 426px) and (max-width: 1024px) {
+  .choix {
+    width: 420px;
+    height: 600px;
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 2560px) {
+  .choix {
+    width: 650px;
+    height: 700px;
+  }
+}
+
+.choix img {
+  height: auto;
+  width: 400px;
+}
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .choix img {
+    width: 270px;
+  }
+}
+
+.choix_description {
+  margin-top: 50px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .choix_description {
+    font-size: 1rem;
+  }
+}
+
+.choix_description h3 {
+  padding-bottom: 50px;
+  background: linear-gradient(to right, #c28a46, #e6b376, #cc8a78, #ce6ba8, #c367ad, #8b54c7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.5em;
+  transition: 0.2s;
+}
+
+.choix_description h3:hover {
+  transform: scale(1.2);
+}
+
+.choix_description p {
+  padding-bottom: 50px;
+}
+
+.choix_description a {
+  margin-top: 30px;
+  padding: 12px 24px;
+  color: #fff;
+  text-decoration: none;
+  background-color: #8b54c7;
+}
+
+#teddy_choice {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+main {
   display: flex;
   justify-content: center;
   margin-top: 80px;
