@@ -1,20 +1,19 @@
 //URL de l'API
 getAllBears("http://localhost:3000/api/teddies")
 
-
 function getAllBears(url){
-    return new Promise((resolve) => {
-      let request = new XMLHttpRequest();
-      request.onreadystatechange = function () {
-        if (this.readyState == XMLHttpRequest.DONE && this.status >= 200) {
-          resolve(JSON.parse(this.responseText));
-          console.log("fonction OK");
-    }
-};
-    request.open('GET', "http://localhost:3000/api/teddies");
+  return new Promise((resolve) => {
+    let request = new XMLHttpRequest();
+    request.open('GET', url);
     request.send();
-    });
-};
+    request.onreadystatechange = function () {
+      if (this.readyState == XMLHttpRequest.DONE && this.status >= 200) {
+        resolve(JSON.parse(this.responseText));
+        console.log("fonction OK");
+      }
+    }
+  })
+}
 
 //Récupère tous les oursons
 async function getAllBears (url) {

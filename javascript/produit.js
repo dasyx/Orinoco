@@ -1,20 +1,16 @@
-function getAllBears(url) { // Fonction pour récupérer les données du back en asynchrone
-  return new Promise((resolve, reject) => { // La fonction renvoie une promesse pour éviter les callback
-      let request = new XMLHttpRequest(); // On crée un nouvel objet XMLHttpRequest
-      request.open("GET", url); // On initialise la requête en précisant le type et l'url cible
-      request.send(); // On envoie la requête
-      request.onreadystatechange = function() { // A chaque changement d'état de la propriété onreadystatechange
-          if (this.readyState === 4) { // Si l'état vaut 4 (=DONE) la requête est terminée
-              if (this.status === 200) { // On check aussi le status: si il est = 200 -> la requête est un succès
-                  resolve(JSON.parse(this.responseText)); // On resolve donc la promesse en envoyant la réponse, donc nos objets
-              } else {
-                  reject(request); // Sinon on la rejette et on passe en argument la requête pour éventuellement récupérer les codes erreurs
-              }
-          }
+function getAllBears(url){
+  return new Promise((resolve) => {
+    let request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.send();
+    request.onreadystatechange = function () {
+      if (this.readyState == XMLHttpRequest.DONE && this.status >= 200) {
+        resolve(JSON.parse(this.responseText));
+        console.log("fonction OK");
       }
+    }
   })
 }
-
 //URL de l'API
 const url = "http://localhost:3000/api/teddies";
 
