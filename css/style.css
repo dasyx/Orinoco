@@ -296,6 +296,11 @@ header h1 {
   margin-bottom: 50px;
 }
 
+.choix_couleur label {
+  margin-right: 20px;
+  font-size: large;
+}
+
 .choix_ajout_panier a {
   margin-top: 30px;
   padding: 12px 24px;
