@@ -14,6 +14,7 @@ function getAllBears(url){
       }
     })
   }
+    // Création de la fonction qui affichera tous les oursons sous forme de liste sur la page index.html
 function displayProduct(teddy){
 
     let listeProduit = document.getElementById("teddy_list");
@@ -26,7 +27,7 @@ function displayProduct(teddy){
     let prodPrice = document.createElement("p");
     let prodLink = document.createElement("a");
 
-    //Ajout des attributs au balise index HTML 
+    // Ajout des attributs aux balises de la page index.html
     prodCont.setAttribute("class", "produit");
     prodImage.setAttribute("class", "produit_illustration");
     prodPhoto.setAttribute("src", teddy.imageUrl);
@@ -36,7 +37,7 @@ function displayProduct(teddy){
     prodPrice.setAttribute("class", "produit_price");
     prodLink.setAttribute("href", "produit.html?id=" + teddy._id);
 
-    // Agencement des éléments index HTML
+    // Agencement des éléments de la page index.html
     listeProduit.appendChild(prodCont);
     prodCont.appendChild(prodImage);
     prodImage.appendChild(prodPhoto);
@@ -45,12 +46,12 @@ function displayProduct(teddy){
     prodText.appendChild(prodPrice);
     prodText.appendChild(prodLink);
 
-    // Contenu des balises index HTML 
+    // Contenu des balises de la page index.html 
     prodName.textContent = teddy.name;
     prodPrice.textContent = teddy.price / 100 + " euros";
     prodLink.textContent = "Choisissez-moi !";
 }
-
+    // Création de la fonction qui affichera chaque ourson individuellement sur la page produit.html
 function productChoice(response){
     let choixProduit = document.getElementById("teddy_choice");
 
