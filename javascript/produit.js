@@ -27,10 +27,12 @@ let choixProduit = document.getElementById("teddy_choice");
 let choixCont = document.createElement("section");
 let choixImage = document.createElement("div");
 let choixText = document.createElement("div");
+let choixOpt = document.createElement("div");
 let choixPhoto = document.createElement("img");
 let choixName = document.createElement("h3");
 let choixPrice = document.createElement("p");
 let choixColor = document.createElement("select");
+let choixAjout = document.createElement("div");
 let choixLink = document.createElement("a");
 
 //Ajout des attributs au balise index HTML 
@@ -41,6 +43,8 @@ choixPhoto.setAttribute("alt", "photo ours peluches");
 choixText.setAttribute("class", "choix_description");
 choixName.setAttribute("class", "choix_name");
 choixPrice.setAttribute("class", "choix_price");
+choixOpt.setAttribute("class", "choix_couleur");
+choixAjout.setAttribute("class", "choix_ajout_panier");
 choixLink.setAttribute("href", "panier.html?id=" + response._id);
 
 // Agencement des éléments index HTML
@@ -50,8 +54,10 @@ choixImage.appendChild(choixPhoto);
 choixCont.appendChild(choixText);
 choixText.appendChild(choixName);
 choixText.appendChild(choixPrice);
-choixText.appendChild(choixColor);
-choixText.appendChild(choixLink);
+choixCont.appendChild(choixOpt);
+choixOpt.appendChild(choixColor);
+choixCont.appendChild(choixAjout);
+choixAjout.appendChild(choixLink);
 
 // Contenu des balises index HTML 
 choixName.textContent = response.name;
