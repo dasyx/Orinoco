@@ -30,6 +30,7 @@ let choixText = document.createElement("div");
 let choixPhoto = document.createElement("img");
 let choixName = document.createElement("h3");
 let choixPrice = document.createElement("p");
+let choixColor = document.createElement("select");
 let choixLink = document.createElement("a");
 
 //Ajout des attributs au balise index HTML 
@@ -49,10 +50,18 @@ choixImage.appendChild(choixPhoto);
 choixCont.appendChild(choixText);
 choixText.appendChild(choixName);
 choixText.appendChild(choixPrice);
+choixText.appendChild(choixColor);
 choixText.appendChild(choixLink);
 
 // Contenu des balises index HTML 
 choixName.textContent = response.name;
 choixPrice.textContent = response.price / 100 + " euros";
-choixLink.textContent = "Ajoutez-moi !";
+choixLink.textContent = "Ajouter au panier";
+
+  for (var i = 0; i < response.colors.length; i++) {
+    var option = document.createElement("option");
+    option.value = response.colors[i];
+    option.text = response.colors[i];
+    choixColor.appendChild(option);
+  }
 })

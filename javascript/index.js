@@ -58,6 +58,6 @@ teddies.forEach((teddy) => {
     // Contenu des balises index HTML 
     prodName.textContent = teddy.name;
     prodPrice.textContent = teddy.price / 100 + " euros";
-    prodLink.textContent = "Ajoutez-moi !";
+    prodLink.textContent = "Choisissez-moi !";
   });
 }
