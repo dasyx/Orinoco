@@ -14,7 +14,7 @@ function getAllBears(url){
       }
     })
   }
-    // Création de la fonction qui affichera tous les oursons sous forme de liste sur la page index.html
+// Création de la fonction qui affichera tous les oursons sous forme de liste sur la page index.html
 function displayProduct(teddy){
 
     let listeProduit = document.getElementById("teddy_list");
@@ -63,7 +63,7 @@ function productChoice(response){
     let choixPrice = document.createElement("p");
     let choixOpt = document.createElement("div");
     let choixLabel = document.createElement("label");
-    choixLabel.htmlFor ="choix_option";
+        choixLabel.htmlFor = "choix_option";
     let choixColor = document.createElement("select");
     let choixAjout = document.createElement("div");
     let choixLink = document.createElement("a");
@@ -108,4 +108,33 @@ function productChoice(response){
         option.text = response.colors[i];
         choixColor.appendChild(option);
     }
+}
+// Création de la fonction qui affiche le produit sélectionné au panier
+function addToCart(choice){
+    let selCart = document.getElementById("cart");
+
+    let selDisplay = document.createElement("section");
+    let selImage = document.createElement("div");
+    let selPhoto = document.createElement("img");
+    let selText = document.createElement("div");
+    let selName = document.createElement("h3");
+    let selPrice = document.createElement("p");
+    // Création d'un bouton de modif de quantité
+    let selQtyPlus = document.createElement("button");
+    let selQtyMin = document.createElement("button");
+    let selQtyInput = document.createElement("input");
+    // Création d'un bouton de vidage de panier
+    let selQtyDel = document.createElement("button");
+    // Création d'un formulaire qui sera rempli par l'utilisateur
+    let selValid = document.createElement("section");
+    let selForm = document.createElement("form");
+    let selFormLabelName = document.createElement("label");
+        selFormLabelName.htmlFor = "name";
+    let selFormName = document.createElement("input");
+    let selFormLabelMail = document.createElement("label");
+        selFormLabelMail.htmlFor = "mail";
+    let selFormMail = document.createElement("input");
+    let selFormLabelPhone = document.createElement("label");
+        selFormLabelPhone.htmlFor = "phone";
+    let selFormPhone = document.createElement("input");
 }
