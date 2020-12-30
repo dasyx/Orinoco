@@ -127,6 +127,7 @@ function productChoice(response){
   let selQtyInput = document.createElement("input");
 
   // Création d'un bouton de vidage de panier
+  let selQtyDelCont = document.createElement("div");
   let selQtyDel = document.createElement("button");
 
   // Création d'un formulaire qui sera rempli par l'utilisateur
@@ -153,21 +154,33 @@ function productChoice(response){
   selPrice.setAttribute("class", "select_price");
 
   // Ajout des attributs du bouton de modif de quantité
-  selQtyCont.setAttribute("class", "btn_container");
+  selQtyCont.setAttribute("class", "btnQty_container");
   selQtyPlus.setAttribute("id", "increase");
   selQtyMin.setAttribute("id", "decrease");
-  selQtyInput.setAttribute("id", "value=0", "input");
+  selQtyInput.setAttribute("id", "input");
 
   // Ajout de l'attribut du bouton vidage panier
+  selQtyDelCont.setAttribute("class","empty_cart-container");
   selQtyDel.setAttribute("id", "empty_cart");
 
   // Ajout des attributs pour la section formulaire
   selFormDisplay.setAttribute("class", "flex_form");
   selForm.setAttribute("id", "check_form");
-  selFormName.setAttribute("id", "name", "type=text", "name=your_name", "required");
-  selFormMail.setAttribute("id", "mail", "type=email", "name=your_email", "required");
-  selFormPhone.setAttribute("id", "phone", "type=tel", "name=phone", "pattern=[0-5]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}","required");
-  selFormValid.setAttribute("id", "submit-btn", "type=submit");
+  selFormName.setAttribute("id", "name");
+  selFormName.setAttribute("type", "text");
+  selFormName.setAttribute("name", "username");
+  selFormName.setAttribute("required", "");
+  selFormMail.setAttribute("id", "mail");
+  selFormMail.setAttribute("type", "email");
+  selFormMail.setAttribute("name", "usermail");
+  selFormMail.setAttribute("required", "");
+  selFormPhone.setAttribute("id", "phone");
+  selFormPhone.setAttribute("type", "tel");
+  selFormPhone.setAttribute("name", "phone");
+  selFormPhone.setAttribute("pattern", "[0-5]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}");
+  selFormPhone.setAttribute("required", "");
+  selFormValid.setAttribute("id", "submit-btn");
+  selFormValid.setAttribute("type", "submit");
 
   // Agencement des éléments et filiation page panier.html
   // Le produit sélectionné 
@@ -181,7 +194,8 @@ function productChoice(response){
   selQtyCont.appendChild(selQtyMin);
   selQtyCont.appendChild(selQtyInput);
   selQtyCont.appendChild(selQtyPlus);
-  selQtyCont.appendChild(selQtyDel);
+  selDisplay.appendChild(selQtyDelCont);
+  selQtyDelCont.appendChild(selQtyDel);
 
   // Le formulaire
   selCart.appendChild(selFormDisplay);
@@ -190,4 +204,11 @@ function productChoice(response){
   selForm.appendChild(selFormMail);
   selForm.appendChild(selFormPhone);
   selFormDisplay.appendChild(selFormValid);
+
+  // Contenu des balises en fonction de l'input / article
+  selName.textContent = choice.name;
+  selPrice.textContent = choice.price / 100 + " euros";
+  selQtyPlus.textContent = "+";
+  selQtyMin.textContent = "-";
+  selQtyDel.textContent = "Vider le panier";
 }
