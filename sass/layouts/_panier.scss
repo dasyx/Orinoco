@@ -1,0 +1,42 @@
+#cart {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+select {
+    @include flexOurs;
+    background-color: #fff;
+    border-radius: 20px 20px;
+    margin-bottom: 60px;
+    padding: 30px;
+}
+.select img {
+    height: auto;
+    width: 400px;
+    @media screen and (min-width: 320px) and (max-width: 425px) {
+        width: 270px;
+    }
+    @media screen and (min-width: 1025px) and (max-width: 2560px) {
+        transition: .3s;
+    }
+}
+.select img:hover { 
+    @media screen and (min-width: 1025px) and (max-width: 2560px) {
+        transform: scale(1.2);
+    }
+}
+.select_description {
+    margin-top: 50px;
+    font-size: 1.2rem;
+    text-align: center;
+    @media screen and (min-width: 320px) and (max-width: 425px) {
+        font-size: 1rem;
+    }
+}
+.select_description h3 {
+    padding-bottom: 50px;
+    background: $orinoco_background;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.5em;
+}

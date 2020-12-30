@@ -309,6 +309,85 @@ header h1 {
   background-color: #8b54c7;
 }
 
+#cart {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+select {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px #000000 solid;
+  box-shadow: 4px 0px 8px 5px #b6b2b280;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: #fff;
+  border-radius: 20px 20px;
+  margin-bottom: 60px;
+  padding: 30px;
+}
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  select {
+    width: 300px;
+    height: 520px;
+  }
+}
+@media screen and (min-width: 426px) and (max-width: 1024px) {
+  select {
+    width: 420px;
+    height: 600px;
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 2560px) {
+  select {
+    width: 560px;
+    height: 700px;
+  }
+}
+
+.select img {
+  height: auto;
+  width: 400px;
+}
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .select img {
+    width: 270px;
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 2560px) {
+  .select img {
+    transition: 0.3s;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 2560px) {
+  .select img:hover {
+    transform: scale(1.2);
+  }
+}
+
+.select_description {
+  margin-top: 50px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .select_description {
+    font-size: 1rem;
+  }
+}
+
+.select_description h3 {
+  padding-bottom: 50px;
+  background: linear-gradient(to right, #c28a46, #e6b376, #cc8a78, #ce6ba8, #c367ad, #8b54c7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.5em;
+}
+
 main {
   display: flex;
   justify-content: center;

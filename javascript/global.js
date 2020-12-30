@@ -109,32 +109,85 @@ function productChoice(response){
         choixColor.appendChild(option);
     }
 }
-// Création de la fonction qui affiche le produit sélectionné au panier
-function addToCart(choice){
-    let selCart = document.getElementById("cart");
+ // Création de la fonction qui affiche le produit sélectionné au panier
+ function addToCart(choice){
+  let selCart = document.getElementById("cart");
 
-    let selDisplay = document.createElement("section");
-    let selImage = document.createElement("div");
-    let selPhoto = document.createElement("img");
-    let selText = document.createElement("div");
-    let selName = document.createElement("h3");
-    let selPrice = document.createElement("p");
-    // Création d'un bouton de modif de quantité
-    let selQtyPlus = document.createElement("button");
-    let selQtyMin = document.createElement("button");
-    let selQtyInput = document.createElement("input");
-    // Création d'un bouton de vidage de panier
-    let selQtyDel = document.createElement("button");
-    // Création d'un formulaire qui sera rempli par l'utilisateur
-    let selValid = document.createElement("section");
-    let selForm = document.createElement("form");
-    let selFormLabelName = document.createElement("label");
-        selFormLabelName.htmlFor = "name";
-    let selFormName = document.createElement("input");
-    let selFormLabelMail = document.createElement("label");
-        selFormLabelMail.htmlFor = "mail";
-    let selFormMail = document.createElement("input");
-    let selFormLabelPhone = document.createElement("label");
-        selFormLabelPhone.htmlFor = "phone";
-    let selFormPhone = document.createElement("input");
+  let selDisplay = document.createElement("section");
+  let selImage = document.createElement("div");
+  let selPhoto = document.createElement("img");
+  let selText = document.createElement("div");
+  let selName = document.createElement("h3");
+  let selPrice = document.createElement("p");
+
+  // Création d'un bouton de modif de quantité
+  let selQtyCont = document.createElement("div");
+  let selQtyPlus = document.createElement("button");
+  let selQtyMin = document.createElement("button");
+  let selQtyInput = document.createElement("input");
+
+  // Création d'un bouton de vidage de panier
+  let selQtyDel = document.createElement("button");
+
+  // Création d'un formulaire qui sera rempli par l'utilisateur
+  let selFormDisplay = document.createElement("section");
+  let selForm = document.createElement("form");
+  let selFormLabelName = document.createElement("label");
+      selFormLabelName.htmlFor = "name";
+  let selFormName = document.createElement("input");
+  let selFormLabelMail = document.createElement("label");
+      selFormLabelMail.htmlFor = "mail";
+  let selFormMail = document.createElement("input");
+  let selFormLabelPhone = document.createElement("label");
+      selFormLabelPhone.htmlFor = "phone";
+  let selFormPhone = document.createElement("input");
+  let selFormValid = document.createElement("input");
+
+  // Ajout des attributs de la selection produit à la page panier.html
+  selDisplay.setAttribute("class", "select");
+  selImage.setAttribute("class", "select_illustration");
+  selPhoto.setAttribute("src", choice.imageUrl);
+  selPhoto.setAttribute("alt", "photo ours peluches");
+  selText.setAttribute("class", "select_description");
+  selName.setAttribute("class", "select_name");
+  selPrice.setAttribute("class", "select_price");
+
+  // Ajout des attributs du bouton de modif de quantité
+  selQtyCont.setAttribute("class", "btn_container");
+  selQtyPlus.setAttribute("id", "increase");
+  selQtyMin.setAttribute("id", "decrease");
+  selQtyInput.setAttribute("id", "value=0", "input");
+
+  // Ajout de l'attribut du bouton vidage panier
+  selQtyDel.setAttribute("id", "empty_cart");
+
+  // Ajout des attributs pour la section formulaire
+  selFormDisplay.setAttribute("class", "flex_form");
+  selForm.setAttribute("id", "check_form");
+  selFormName.setAttribute("id", "name", "type=text", "name=your_name", "required");
+  selFormMail.setAttribute("id", "mail", "type=email", "name=your_email", "required");
+  selFormPhone.setAttribute("id", "phone", "type=tel", "name=phone", "pattern=[0-5]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}","required");
+  selFormValid.setAttribute("id", "submit-btn", "type=submit");
+
+  // Agencement des éléments et filiation page panier.html
+  // Le produit sélectionné 
+  selCart.appendChild(selDisplay);
+  selDisplay.appendChild(selImage);
+  selImage.appendChild(selPhoto);
+  selDisplay.appendChild(selText);
+  selText.appendChild(selName);
+  selText.appendChild(selPrice);
+  selDisplay.appendChild(selQtyCont);
+  selQtyCont.appendChild(selQtyMin);
+  selQtyCont.appendChild(selQtyInput);
+  selQtyCont.appendChild(selQtyPlus);
+  selQtyCont.appendChild(selQtyDel);
+
+  // Le formulaire
+  selCart.appendChild(selFormDisplay);
+  selFormDisplay.appendChild(selForm);
+  selForm.appendChild(selFormName);
+  selForm.appendChild(selFormMail);
+  selForm.appendChild(selFormPhone);
+  selFormDisplay.appendChild(selFormValid);
 }
