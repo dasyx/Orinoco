@@ -19,8 +19,8 @@ function displayProduct(teddy){
 
     let listeProduit = document.getElementById("teddy_list");
 
-    let prodCont = document.createElement("section");
-    let prodImage = document.createElement("div");
+    let prodCont = document.createElement("section");
+    let prodImage = document.createElement("div");
     let prodText = document.createElement("div");
     let prodPhoto = document.createElement("img");
     let prodName = document.createElement("h3");
@@ -28,8 +28,8 @@ function displayProduct(teddy){
     let prodLink = document.createElement("a");
 
     // Ajout des attributs aux balises de la page index.html
-    prodCont.setAttribute("class", "produit");
-    prodImage.setAttribute("class", "produit_illustration");
+    prodCont.setAttribute("class", "produit");
+    prodImage.setAttribute("class", "produit_illustration");
     prodPhoto.setAttribute("src", teddy.imageUrl);
     prodPhoto.setAttribute("alt", "photo ours peluches");
     prodText.setAttribute("class", "produit_description");
@@ -55,8 +55,8 @@ function displayProduct(teddy){
 function productChoice(response){
     let choixProduit = document.getElementById("teddy_choice");
 
-    let choixCont = document.createElement("section");
-    let choixImage = document.createElement("div");
+    let choixCont = document.createElement("section");
+    let choixImage = document.createElement("div");
     let choixText = document.createElement("div");
     let choixPhoto = document.createElement("img");
     let choixName = document.createElement("h3");
@@ -66,11 +66,11 @@ function productChoice(response){
         choixLabel.htmlFor = "choix_option";
     let choixColor = document.createElement("select");
     let choixAjout = document.createElement("div");
-    let choixLink = document.createElement("a");
+    let choixLink = document.createElement("button");
 
     // Ajout des attributs à la page produit.html
-    choixCont.setAttribute("class", "choix");
-    choixImage.setAttribute("class", "choix_illustration");
+    choixCont.setAttribute("class", "choix");
+    choixImage.setAttribute("class", "choix_illustration");
     choixPhoto.setAttribute("src", response.imageUrl);
     choixPhoto.setAttribute("alt", "photo ours peluches");
     choixText.setAttribute("class", "choix_description");
@@ -79,7 +79,6 @@ function productChoice(response){
     choixOpt.setAttribute("class", "choix_couleur");
     choixColor.setAttribute("id", "choix_option");
     choixAjout.setAttribute("class", "choix_ajout_panier");
-    choixLink.setAttribute("href", "panier.html?id=" + response._id);
 
     // Agencement des éléments à la page produit.html
     choixProduit.appendChild(choixCont);
@@ -108,9 +107,36 @@ function productChoice(response){
         option.text = response.colors[i];
         choixColor.appendChild(option);
     }
-}
+    // Assigne valeur à envoyer à localStorage
+    const product = {
+        id: response._id,
+        name: response.name,
+        price: response.price,
+        imageUrl: response.imageUrl,
+        quantity: 1,
+  }
+    // Envoie valeur à localStorage après un clique
+    choixLink.addEventListener("click", () => {
+    // récupérer panier localstorage
+    let panier = JSON.parse(localStorage.getItem("panier"));
+    if (panier === null) {
+      panier = {};
+    }
+    // ajouter le produit au panier
+    if (panier[product.id] !== undefined) {
+      panier[product.id].quantity += 1;
+    } else {
+      panier[product.id] = product;
+    }
+    // update panier localstorage
+    localStorage.setItem("panier", JSON.stringify(panier));
+    choixLink.classList.add("invisible");
+    choixAjout.textContent = "Le produit a été ajouté au panier !";
+  });
+};
+
  // Création de la fonction qui affiche le produit sélectionné au panier
- function addToCart(choice){
+ function displayCart(response){
   let selCart = document.getElementById("cart");
 
   let selDisplay = document.createElement("section");
@@ -145,9 +171,9 @@ function productChoice(response){
   let selFormValid = document.createElement("input");
 
   // Ajout des attributs de la selection produit à la page panier.html
-  selDisplay.setAttribute("class", "select");
+  selDisplay.setAttribute("class", "select");
   selImage.setAttribute("class", "select_illustration");
-  selPhoto.setAttribute("src", choice.imageUrl);
+  selPhoto.setAttribute("src", response.imageUrl);
   selPhoto.setAttribute("alt", "photo ours peluches");
   selText.setAttribute("class", "select_description");
   selName.setAttribute("class", "select_name");
@@ -206,8 +232,8 @@ function productChoice(response){
   selFormDisplay.appendChild(selFormValid);
 
   // Contenu des balises en fonction de l'input / article
-  selName.textContent = choice.name;
-  selPrice.textContent = choice.price / 100 + " euros";
+  selName.textContent = response.name;
+  selPrice.textContent = response.price / 100 + " euros";
   selQtyPlus.textContent = "+";
   selQtyMin.textContent = "-";
   selQtyDel.textContent = "Vider le panier";

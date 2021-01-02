@@ -8,7 +8,7 @@ footer {
     position: fixed;
     /*avec la position: fixed, le footer sera visible même au scrolling*/
     bottom: 0;
-    background-color: #f3e9f1;
+    background-color: $orinoco_background;
     border-top: 2px solid black;
     font-family: $orinoco_font_main;
 }

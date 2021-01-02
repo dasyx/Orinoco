@@ -4,7 +4,7 @@ const idTeddy = params.get("id");
 
 getAllBears(url + idTeddy)
 
-  .then (choice => {
+  .then (response => {
   // Création de l'affichage selon les données du produit mis au panier
-      addToCart(choice);
+      displayCart(response);
 })
