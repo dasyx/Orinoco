@@ -1,11 +1,14 @@
 #cart {
     display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
+    width: 100%;
 }
 .select {
-    @include flexOurs;
+    display: flex;
+    flex: 1 auto;
+    justify-content: space-between;
+    align-items: center;
     background-color: #fff;
+    border: 2px solid black;
     border-radius: 20px 20px;
     margin-bottom: 60px;
     padding: 30px;
