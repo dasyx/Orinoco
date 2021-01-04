@@ -36,6 +36,10 @@ function displayProduct(teddy){
     prodName.setAttribute("class", "produit_name");
     prodPrice.setAttribute("class", "produit_price");
     prodLink.setAttribute("href", "produit.html?id=" + teddy._id);
+    prodLink.onclick = function storeData(){
+      window.localStorage.setItem("teddyDetails", JSON.stringify(teddy));
+      //window.open("produit.html?id=" + teddy._id, "_self");
+    };
 
     // Agencement des éléments de la page index.html
     listeProduit.appendChild(prodCont);
@@ -51,7 +55,7 @@ function displayProduct(teddy){
     prodPrice.textContent = teddy.price / 100 + " euros";
     prodLink.textContent = "Choisissez-moi !";
 }
-let response = JSON.parse(window.localStorage.getItem("productDetails"));
+let response = JSON.parse(window.localStorage.getItem("teddyDetails"));
 
     // Création de la fonction qui affichera chaque ourson individuellement sur la page produit.html
 function productChoice(response){
@@ -130,7 +134,7 @@ function addToCart() {
       console.log(productsArray);
 
       // Vérifie si l'objet se trouve dans le array
-      if (productsArray.find(product => product._id === response._id)) {
+      if (productsArray.find(() => response._id)) {
 
           //Si oui ==> incémenter la valeur de 1
           response.quantity++;
@@ -147,6 +151,7 @@ function addToCart() {
 
       }
   }
+
   // Récupère le array
   productsArray = JSON.stringify(productsArray);
 

@@ -309,6 +309,10 @@ header h1 {
   background-color: #8b54c7;
 }
 
+.return_main {
+  margin-bottom: 50px;
+}
+
 #cart {
   display: flex;
   width: 100%;
