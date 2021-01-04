@@ -51,6 +51,8 @@ function displayProduct(teddy){
     prodPrice.textContent = teddy.price / 100 + " euros";
     prodLink.textContent = "Choisissez-moi !";
 }
+let response = JSON.parse(window.localStorage.getItem("productDetails"));
+
     // Création de la fonction qui affichera chaque ourson individuellement sur la page produit.html
 function productChoice(response){
     let choixProduit = document.getElementById("teddy_choice");
@@ -79,6 +81,8 @@ function productChoice(response){
     choixOpt.setAttribute("class", "choix_couleur");
     choixColor.setAttribute("id", "choix_option");
     choixAjout.setAttribute("class", "choix_ajout_panier");
+    choixLink.setAttribute("id", "btn_cart");
+    choixLink.setAttribute("onclick", "addToCart()");
 
     // Agencement des éléments à la page produit.html
     choixProduit.appendChild(choixCont);
@@ -107,93 +111,45 @@ function productChoice(response){
         option.text = response.colors[i];
         choixColor.appendChild(option);
     }
-    // Assigne valeur à envoyer à localStorage
-    const product = {
-        id: response._id,
-        name: response.name,
-        price: response.price,
-        imageUrl: response.imageUrl,
-        quantity: 1,
-  }
-    // Envoie valeur à localStorage après un clique
-    choixLink.addEventListener("click", () => {
-    // récupérer panier localstorage
-    let panier = JSON.parse(localStorage.getItem("panier"));
-    if (panier === null) {
-      panier = {};
-    }
-    // ajouter le produit au panier
-    if (panier[product.id] !== undefined) {
-      panier[product.id].quantity += 1;
-    } else {
-      panier[product.id] = product;
-    }
-    // update panier localstorage
-    localStorage.setItem("panier", JSON.stringify(panier));
-    choixLink.classList.add("invisible");
-    choixAjout.textContent = "Le produit a été ajouté au panier !";
-  });
 };
 
- // Création de la fonction qui affiche le produit sélectionné au panier
- function displayCart(response){
-  let selCart = document.getElementById("cart");
+function addToCart() {
+  let productsArray = localStorage.getItem("productList");
 
-  let selDisplay = document.createElement("section");
-  let selImage = document.createElement("div");
-  let selPhoto = document.createElement("img");
-  let selText = document.createElement("div");
-  let selName = document.createElement("h3");
-  let selPrice = document.createElement("p");
+  // Vérification si productsArray existe dans localStorage
+  if (!productsArray) {
 
-  // Création d'un bouton de modif de quantité
-  let selQtyCont = document.createElement("div");
-  let selQtyPlus = document.createElement("button");
-  let selQtyMin = document.createElement("button");
-  let selQtyInput = document.createElement("input");
+      // Si non, initialiser le array, initialiser la quantité et ajouter l'objet
+      productsArray = [];
+      response.quantity = 1;
+      productsArray.push(response);
+  } else {
 
-  // Création d'un bouton de vidage de panier
-  let selQtyDelCont = document.createElement("div");
-  let selQtyDel = document.createElement("button");
+      // Si oui, récupérer le array. 
+      productsArray = JSON.parse(productsArray);
+      console.log(productsArray);
 
-  // Ajout des attributs de la selection produit à la page panier.html
-  selDisplay.setAttribute("class", "select");
-  selImage.setAttribute("class", "select_illustration");
-  selPhoto.setAttribute("src", response.imageUrl);
-  selPhoto.setAttribute("alt", "photo ours peluches");
-  selText.setAttribute("class", "select_description");
-  selName.setAttribute("class", "select_name");
-  selPrice.setAttribute("class", "select_price");
+      // Vérifie si l'objet se trouve dans le array
+      if (productsArray.find(product => product._id === response._id)) {
 
-  // Ajout des attributs du bouton de modif de quantité
-  selQtyCont.setAttribute("class", "btnQty_container");
-  selQtyPlus.setAttribute("id", "increase");
-  selQtyMin.setAttribute("id", "decrease");
-  selQtyInput.setAttribute("id", "input");
+          //Si oui ==> incémenter la valeur de 1
+          response.quantity++;
+          for (var i = 0; i < productsArray.length; i++) {
+              if (response.id === productsArray[i]._id) { //Vérifie si l'id correspond
+                  productsArray[i].quantity++;
+                  break; //Quitte la boucle
+              }
+          }
+      } else {
+          //Si non ==> initialise la quantité et ajoute l'objet dans le array
+          response.quantity = 1;
+          productsArray.push(response);
 
-  // Ajout de l'attribut du bouton vidage panier
-  selQtyDelCont.setAttribute("class","empty_cart-container");
-  selQtyDel.setAttribute("id", "empty_cart");
+      }
+  }
+  // Récupère le array
+  productsArray = JSON.stringify(productsArray);
 
-  // Agencement des éléments et filiation page panier.html
-  // Le produit sélectionné 
-  selCart.appendChild(selDisplay);
-  selDisplay.appendChild(selImage);
-  selImage.appendChild(selPhoto);
-  selDisplay.appendChild(selText);
-  selText.appendChild(selName);
-  selText.appendChild(selPrice);
-  selDisplay.appendChild(selQtyCont);
-  selQtyCont.appendChild(selQtyMin);
-  selQtyCont.appendChild(selQtyInput);
-  selQtyCont.appendChild(selQtyPlus);
-  selDisplay.appendChild(selQtyDelCont);
-  selQtyDelCont.appendChild(selQtyDel);
-
-  // Contenu des balises en fonction de l'input / article
-  selName.textContent = response.name;
-  selPrice.textContent = response.price / 100 + " euros";
-  selQtyPlus.textContent = "+";
-  selQtyMin.textContent = "-";
-  selQtyDel.textContent = "Supprimer";
+  // Renvoie le array au localStorage
+  localStorage.setItem("productList", productsArray);
 }

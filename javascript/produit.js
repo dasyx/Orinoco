@@ -8,3 +8,5 @@ getAllBears(url + idTeddy)
   // Création de l'affichage selon les données du produit
       productChoice(response);
 })
+
+    
