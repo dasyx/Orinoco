@@ -1,9 +1,12 @@
+// Récupération des données du localStorage
 let cart = JSON.parse(window.localStorage.getItem("productsList"));
+console.log(cart); 
 
-const selCart = document.getElementById("cart"); 
+let selCart = document.getElementById("cart");
 
+// Boucle qui va créer un item par article dans le panier 
 for(let i in cart){
-   
+
   let selDisplay = document.createElement("section");
   let selImage = document.createElement("div");
   let selPhoto = document.createElement("img");
@@ -39,9 +42,9 @@ for(let i in cart){
   // Ajout de l'attribut du bouton vidage panier
   selQtyDelCont.setAttribute("class","empty_cart-container");
   selQtyDel.setAttribute("id", "empty_cart");
+  selQtyDel.setAttribute("onclick", "delItemCart()");
 
   // Agencement des éléments et filiation page panier.html
-  // Le produit sélectionné 
   selCart.appendChild(selDisplay);
   selDisplay.appendChild(selImage);
   selImage.appendChild(selPhoto);
@@ -61,4 +64,17 @@ for(let i in cart){
   selQtyPlus.textContent = "+";
   selQtyMin.textContent = "-";
   selQtyDel.textContent = "Supprimer";
+  selQtyDel.onclick = function delItemCart(){
+    let removeElt = localStorage.getItem("productsList");
+    // Récupération du tableau articles
+    removeElt = JSON.parse(removeElt);
+    // Suppression de l'article
+    removeElt.splice(cart,1);
+    // Réecriture du tableau
+    removeElt = JSON.stringify(removeElt);
+    // Renvoi des données au localStorage 
+    localStorage.setItem("productsList", removeElt);
+    // Actualise la page dynamiquement
+    location.reload(); 
+  }
 }

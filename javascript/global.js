@@ -118,7 +118,7 @@ function productChoice(response){
 };
 
 function addToCart() {
-  let productsArray = localStorage.getItem("productList");
+  let productsArray = localStorage.getItem("productsList");
 
   // Vérification si productsArray existe dans localStorage
   if (!productsArray) {
@@ -134,7 +134,7 @@ function addToCart() {
       console.log(productsArray);
 
       // Vérifie si l'objet se trouve dans le array
-      if (productsArray.find(() => response._id)) {
+      if (productsArray.find(product => product._id === response._id)) {
 
           //Si oui ==> incémenter la valeur de 1
           response.quantity++;
@@ -156,5 +156,5 @@ function addToCart() {
   productsArray = JSON.stringify(productsArray);
 
   // Renvoie le array au localStorage
-  localStorage.setItem("productList", productsArray);
+  localStorage.setItem("productsList", productsArray);
 }
