@@ -73,6 +73,8 @@ function productChoice(response){
     let choixColor = document.createElement("select");
     let choixAjout = document.createElement("div");
     let choixLink = document.createElement("button");
+    let messCart = document.createElement("p");
+
 
     // Ajout des attributs à la page produit.html
     choixCont.setAttribute("class", "choix");
@@ -87,6 +89,7 @@ function productChoice(response){
     choixAjout.setAttribute("class", "choix_ajout_panier");
     choixLink.setAttribute("id", "btn_cart");
     choixLink.setAttribute("onclick", "addToCart()");
+    messCart.setAttribute("class", "cart_mess");
 
     // Agencement des éléments à la page produit.html
     choixProduit.appendChild(choixCont);
@@ -100,12 +103,21 @@ function productChoice(response){
     choixOpt.appendChild(choixColor);
     choixCont.appendChild(choixAjout);
     choixAjout.appendChild(choixLink);
+    choixCont.appendChild(messCart);
 
     // Contenu des balises en fonction de chaque article
     choixName.textContent = response.name;
     choixPrice.textContent = response.price / 100 + " euros";
     choixLabel.textContent = "Choisissez ma couleur :";
     choixLink.textContent = "Ajouter au panier";
+    
+    // Ecoute de l'événement clic, actif dès que le produit est ajouté au panier
+    choixLink.addEventListener('click', clickCart);
+
+    function clickCart(){
+      // La fonction qui va créer l'info d'ajout au panier
+      messCart.textContent = "Le produit a été ajouté au panier";
+    }
 
     // Création d'une boucle for qui itère le résultat de la fonction qui récupère l'url de l'api  
     for (var i = 0; i < response.colors.length; i++) {
@@ -148,7 +160,6 @@ function addToCart() {
           //Si non ==> initialise la quantité et ajoute l'objet dans le array
           response.quantity = 1;
           productsArray.push(response);
-
       }
   }
 

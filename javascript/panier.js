@@ -1,3 +1,4 @@
+function displayCart (){
 // Récupération des données du localStorage
 let cart = JSON.parse(window.localStorage.getItem("productsList"));
 console.log(cart); 
@@ -69,7 +70,7 @@ for(let i in cart){
     // Récupération du tableau articles
     removeElt = JSON.parse(removeElt);
     // Suppression de l'article
-    removeElt.splice(cart,1);
+    removeElt.splice(cart[i],1);
     // Réecriture du tableau
     removeElt = JSON.stringify(removeElt);
     // Renvoi des données au localStorage 
@@ -77,4 +78,18 @@ for(let i in cart){
     // Actualise la page dynamiquement
     location.reload(); 
   }
+}}
+
+// Récupération des données du tableau
+let msgCart = JSON.parse(window.localStorage.getItem("productsList"));
+
+// Condition qui affichera ou non le message du panier vide
+if(msgCart.length == 0){
+  document.getElementById("msg_cart").innerHTML = "Votre panier est vide !";
+} else {
+  displayCart();
+  let affCart = document.getElementById("msg_cart_cont");
+  affCart.remove();
 }
+
+

@@ -1,5 +1,6 @@
 #cart {
-    width: 100%;
+    width: 90%;
+    text-align: center;
 }
 .select {
     display: flex;
@@ -41,4 +42,8 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 1.5em;
+}
+.return_main {
+    margin-top: 50px;
+    margin-bottom: 50px;
 }

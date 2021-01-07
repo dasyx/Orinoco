@@ -309,12 +309,13 @@ header h1 {
   background-color: #8b54c7;
 }
 
-.return_main {
-  margin-bottom: 50px;
+#btn_cart {
+  text-align: center;
 }
 
 #cart {
-  width: 100%;
+  width: 90%;
+  text-align: center;
 }
 
 .select {
@@ -367,6 +368,11 @@ header h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 1.5em;
+}
+
+.return_main {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 main {
