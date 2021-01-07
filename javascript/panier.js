@@ -38,7 +38,10 @@ for(let i in cart){
   selQtyCont.setAttribute("class", "btnQty_container");
   selQtyPlus.setAttribute("id", "increase");
   selQtyMin.setAttribute("id", "decrease");
-  selQtyInput.setAttribute("id", "input");
+  selQtyInput.setAttribute("type", "text");
+  selQtyInput.setAttribute("value", 1);
+  selQtyInput.setAttribute("maxlength", 99)
+  selQtyInput.setAttribute("id", "teddy_qty");
 
   // Ajout de l'attribut du bouton vidage panier
   selQtyDelCont.setAttribute("class","empty_cart-container");
@@ -65,6 +68,44 @@ for(let i in cart){
   selQtyPlus.textContent = "+";
   selQtyMin.textContent = "-";
   selQtyDel.textContent = "Supprimer";
+
+  // Fonction qui augmentera la quantité d'articles sélectionnés
+  selQtyPlus.onclick = function (){
+    let selTeddyPlus = localStorage.getItem("productsList");
+    // Récupération du tableau articles
+    selTeddyPlus = JSON.parse(selTeddyPlus);
+
+    //increase the quantity
+    selTeddyPlus[i].quantity++;
+        
+    // Encode the array.
+    selTeddyPlus = JSON.stringify(selTeddyPlus);
+
+    // Add the array back to LocalStorage. 
+    localStorage.setItem("productsList", selTeddyPlus);
+    };
+
+  // Fonction qui réduira la quantité d'articles sélectionnés
+  selQtyMin.onclick = function (){
+    let selTeddyMinus = localStorage.getItem("productsList");
+    // Récupération du tableau 
+    selTeddyMinus = JSON.parse(selTeddyMinus);
+
+    if(!selTeddyMinus[i]){
+        return false;
+    }
+  selTeddyMinus[i].quantity--;
+  if(selTeddyMinus[i].quantity <= 0 ){
+      // Suppression de l'article
+      selTeddyMinus.splice(i,1);
+  }
+      // Réecriture du tableau
+      selTeddyMinus = JSON.stringify(selTeddyMinus);
+      // Renvoi des données au localStorage
+      localStorage.setItem("productsList", selTeddyMinus);
+  };
+
+  // Fonction qui supprimera individuellement un article du panier
   selQtyDel.onclick = function delItemCart(){
     let removeElt = localStorage.getItem("productsList");
     // Récupération du tableau articles
@@ -78,6 +119,14 @@ for(let i in cart){
     // Actualise la page dynamiquement
     location.reload(); 
   }
+
+  // Affichage du montant total du panier
+  let totalPrice = document.getElementById('total_amount');
+  let totalAmount = 0;
+ for(let i = 0; i<cart.length; i++){
+    totalAmount += cart[i].price * cart[i].quantity;
+ }
+ totalPrice.innerText = "Le montant total de votre panier est de :   "  + totalAmount / 100 +  " €";
 }}
 
 // Récupération des données du tableau
@@ -85,11 +134,14 @@ let msgCart = JSON.parse(window.localStorage.getItem("productsList"));
 
 // Condition qui affichera ou non le message du panier vide
 if(msgCart.length == 0){
+
   document.getElementById("msg_cart").innerHTML = "Votre panier est vide !";
+
 } else {
+
   displayCart();
+
   let affCart = document.getElementById("msg_cart_cont");
   affCart.remove();
+
 }
-
-

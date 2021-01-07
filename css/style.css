@@ -375,6 +375,22 @@ header h1 {
   margin-bottom: 50px;
 }
 
+#teddy_qty {
+  width: 30%;
+  text-align: center;
+}
+
+#total_amount {
+  width: 90%;
+  height: 50px;
+  padding-top: 10px;
+  text-align: center;
+  background-color: #fff;
+  border: 2px solid black;
+  border-radius: 20px 20px;
+  margin-bottom: 60px;
+}
+
 main {
   display: flex;
   flex-direction: column;
