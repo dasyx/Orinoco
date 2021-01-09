@@ -19,7 +19,7 @@ for(let i in cart){
   let selQtyCont = document.createElement("div");
   let selQtyPlus = document.createElement("button");
   let selQtyMin = document.createElement("button");
-  let selQtyInput = document.createElement("input");
+  let selQtyInput = document.createElement("div");
 
   // Création d'un bouton de vidage de panier
   let selQtyDelCont = document.createElement("div");
@@ -38,9 +38,6 @@ for(let i in cart){
   selQtyCont.setAttribute("class", "btnQty_container");
   selQtyPlus.setAttribute("id", "increase");
   selQtyMin.setAttribute("id", "decrease");
-  selQtyInput.setAttribute("type", "text");
-  selQtyInput.setAttribute("value", 1);
-  selQtyInput.setAttribute("maxlength", 99)
   selQtyInput.setAttribute("id", "teddy_qty");
 
   // Ajout de l'attribut du bouton vidage panier
@@ -67,6 +64,7 @@ for(let i in cart){
   selPrice.textContent = cart[i].price / 100 + " euros";
   selQtyPlus.textContent = "+";
   selQtyMin.textContent = "-";
+  selQtyInput.innerHTML = cart[i].quantity;
   selQtyDel.textContent = "Supprimer";
 
   // Fonction qui augmentera la quantité d'articles sélectionnés
@@ -83,6 +81,9 @@ for(let i in cart){
 
     // Add the array back to LocalStorage. 
     localStorage.setItem("productsList", selTeddyPlus);
+
+    location.reload();
+
     };
 
   // Fonction qui réduira la quantité d'articles sélectionnés
@@ -103,6 +104,9 @@ for(let i in cart){
       selTeddyMinus = JSON.stringify(selTeddyMinus);
       // Renvoi des données au localStorage
       localStorage.setItem("productsList", selTeddyMinus);
+
+      location.reload();
+
   };
 
   // Fonction qui supprimera individuellement un article du panier
@@ -120,6 +124,8 @@ for(let i in cart){
     location.reload(); 
   }
 
+
+
   // Affichage du montant total du panier
   let totalPrice = document.getElementById('total_amount');
   let totalAmount = 0;
@@ -128,6 +134,7 @@ for(let i in cart){
  }
  totalPrice.innerText = "Le montant total de votre panier est de :   "  + totalAmount / 100 +  " €";
 }}
+
 
 // Récupération des données du tableau
 let msgCart = JSON.parse(window.localStorage.getItem("productsList"));

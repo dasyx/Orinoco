@@ -47,9 +47,13 @@
     margin-top: 50px;
     margin-bottom: 50px;
 }
+.btnQty_container {
+    display: flex;
+    padding: 5px;
+    border: 1px solid #000;
+}
 #teddy_qty {
-    width: 30%;
-    text-align: center;
+    width: 40px;
 }
 #total_amount {
     width: 90%;

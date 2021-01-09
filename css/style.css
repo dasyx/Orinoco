@@ -116,7 +116,7 @@ header h1 {
 }
 
 .choix_titre {
-  margin-top: 50px;
+  margin-top: 150px;
   padding: 20px;
   text-align: center;
   color: #fff;
@@ -375,9 +375,14 @@ header h1 {
   margin-bottom: 50px;
 }
 
+.btnQty_container {
+  display: flex;
+  padding: 5px;
+  border: 1px solid #000;
+}
+
 #teddy_qty {
-  width: 30%;
-  text-align: center;
+  width: 40px;
 }
 
 #total_amount {
