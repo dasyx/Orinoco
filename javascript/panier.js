@@ -23,7 +23,7 @@ for(let i in cart){
 
   // Création d'un bouton de vidage de panier
   let selQtyDelCont = document.createElement("div");
-  let selQtyDel = document.createElement("button");
+  let selQtyDel = document.createElement("i");
 
   // Ajout des attributs de la selection produit à la page panier.html
   selDisplay.setAttribute("class", "select");
@@ -42,6 +42,7 @@ for(let i in cart){
 
   // Ajout de l'attribut du bouton vidage panier
   selQtyDelCont.setAttribute("class","empty_cart-container");
+  selQtyDel.setAttribute("class", "fas fa-trash-alt");
   selQtyDel.setAttribute("id", "empty_cart");
   selQtyDel.setAttribute("onclick", "delItemCart()");
 
@@ -65,7 +66,7 @@ for(let i in cart){
   selQtyPlus.textContent = "+";
   selQtyMin.textContent = "-";
   selQtyInput.innerHTML = cart[i].quantity;
-  selQtyDel.textContent = "Supprimer";
+  /*selQtyDel.textContent = "Supprimer";*/
 
   // Fonction qui augmentera la quantité d'articles sélectionnés
   selQtyPlus.onclick = function (){

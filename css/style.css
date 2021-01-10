@@ -251,8 +251,9 @@ header h1 {
 .choix img {
   height: auto;
   width: 400px;
+  overflow: hidden;
 }
-@media screen and (min-width: 320px) and (max-width: 425px) {
+@media screen and (min-width: 320px) and (max-width: 1025px) {
   .choix img {
     width: 270px;
   }
@@ -311,6 +312,11 @@ header h1 {
 
 #btn_cart {
   text-align: center;
+}
+
+#cart_mess {
+  padding: 10px;
+  font-weight: bolder;
 }
 
 #cart {

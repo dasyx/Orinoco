@@ -13,7 +13,8 @@
 .choix img {
     height: auto;
     width: 400px;
-    @media screen and (min-width: 320px) and (max-width: 425px) {
+    overflow: hidden;
+    @media screen and (min-width: 320px) and (max-width: 1025px) {
         width: 270px;
     }
     @media screen and (min-width: 1025px) and (max-width: 2560px) {
@@ -59,4 +60,8 @@
 }
 #btn_cart {
     text-align: center;
+}
+#cart_mess {
+    padding : 10px;
+    font-weight: bolder;
 }

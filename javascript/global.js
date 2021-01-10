@@ -89,7 +89,7 @@ function productChoice(response){
     choixAjout.setAttribute("class", "choix_ajout_panier");
     choixLink.setAttribute("id", "btn_cart");
     choixLink.setAttribute("onclick", "addToCart()");
-    messCart.setAttribute("class", "cart_mess");
+    messCart.setAttribute("id", "cart_mess");
 
     // Agencement des éléments à la page produit.html
     choixProduit.appendChild(choixCont);
@@ -117,6 +117,7 @@ function productChoice(response){
     function clickCart(){
       // La fonction qui va créer l'info d'ajout au panier
       messCart.textContent = "Le produit a été ajouté au panier";
+      document.getElementById("cart_mess").style.color = "#8b54c7";
     }
 
     // Création d'une boucle for qui itère le résultat de la fonction qui récupère l'url de l'api  
