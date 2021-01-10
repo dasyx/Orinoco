@@ -329,14 +329,19 @@ header h1 {
   margin-bottom: 60px;
   padding: 30px;
 }
+@media screen and (min-width: 320px) and (max-width: 1025px) {
+  .select {
+    display: block;
+  }
+}
 
 .select img {
   height: auto;
   width: 400px;
 }
-@media screen and (min-width: 320px) and (max-width: 425px) {
+@media screen and (min-width: 320px) and (max-width: 1025px) {
   .select img {
-    width: 270px;
+    width: 250px;
   }
 }
 @media screen and (min-width: 1025px) and (max-width: 2560px) {
@@ -356,8 +361,9 @@ header h1 {
   font-size: 1.2rem;
   text-align: center;
 }
-@media screen and (min-width: 320px) and (max-width: 425px) {
+@media screen and (min-width: 320px) and (max-width: 1025px) {
   .select_description {
+    padding-bottom: 15px;
     font-size: 1rem;
   }
 }
@@ -380,6 +386,13 @@ header h1 {
   padding: 5px;
   border: 1px solid #000;
 }
+@media screen and (min-width: 320px) and (max-width: 1025px) {
+  .btnQty_container {
+    margin: 0 auto;
+    width: 30%;
+    justify-content: center;
+  }
+}
 
 #teddy_qty {
   width: 40px;
@@ -387,13 +400,33 @@ header h1 {
 
 #total_amount {
   width: 90%;
-  height: 50px;
+  height: 55px;
   padding-top: 10px;
   text-align: center;
+  font-size: 1.3em;
   background-color: #fff;
   border: 2px solid black;
   border-radius: 20px 20px;
   margin-bottom: 60px;
+}
+@media screen and (min-width: 450px) and (max-width: 1025px) {
+  #total_amount {
+    width: 90%;
+    height: 50px;
+    font-size: 1em;
+  }
+}
+@media screen and (max-width: 449px) {
+  #total_amount {
+    height: 40px;
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 1025px) {
+  #empty_cart {
+    margin-top: 15px;
+  }
 }
 
 main {
