@@ -4,7 +4,6 @@ function displayCart (){
   console.log(cart); 
   
   let selCart = document.getElementById("cart");
-  let majCart = document.getElementById("maj_cart");
   
   // Boucle qui va créer un item par article dans le panier 
   for(let i in cart){
@@ -25,9 +24,6 @@ function displayCart (){
     // Création d'un bouton de vidage de panier
     let selQtyDelCont = document.createElement("div");
     let selQtyDel = document.createElement("i");
-
-    // Création d'un bouton de maj de panier
-    let majButtonCont = document.createElement("div");
   
     // Ajout des attributs de la selection produit à la page panier.html
     selDisplay.setAttribute("class", "select");
@@ -49,9 +45,6 @@ function displayCart (){
     selQtyDel.setAttribute("class", "fas fa-trash-alt");
     selQtyDel.setAttribute("id", "empty_cart");
     selQtyDel.setAttribute("onclick", "delItemCart()");
-
-    // Ajout de l'attribut du bouton maj panier
-    majButtonCont.setAttribute("class", "maj_button_cont");
   
     // Agencement des éléments et filiation page panier.html
     selCart.appendChild(selDisplay);
@@ -66,7 +59,7 @@ function displayCart (){
     selQtyCont.appendChild(selQtyPlus);
     selDisplay.appendChild(selQtyDelCont);
     selQtyDelCont.appendChild(selQtyDel);
-    majCart.appendChild(majButtonCont);
+    
   
     // Contenu des balises en fonction de l'input / article
     selName.textContent = cart[i].name;
@@ -75,7 +68,7 @@ function displayCart (){
     selQtyMin.textContent = "-";
     selQtyInput.innerHTML = cart[i].quantity;
     /*selQtyDel.textContent = "Supprimer";*/
-  
+
     // Fonction qui augmentera la quantité d'articles sélectionnés
   selQtyPlus.onclick = function (){
     let selTeddyPlus = localStorage.getItem("productsList");
@@ -83,8 +76,8 @@ function displayCart (){
     selTeddyPlus = JSON.parse(selTeddyPlus);
 
     // Augmente la quantité à chaque clic
-    //selTeddyPlus[i].quantity++;
-    document.getElementById("teddy_qty").innerHTML = selTeddyPlus[i].quantity++;
+    selTeddyPlus[i].quantity++;
+    //document.getElementById("teddy_qty").innerHTML = selTeddyPlus[i].quantity++;
     location.reload();
     // Récupération du tableau
     selTeddyPlus = JSON.stringify(selTeddyPlus);
@@ -95,40 +88,41 @@ function displayCart (){
     };
   
     // Fonction qui réduira la quantité d'articles sélectionnés
-    selQtyMin.onclick = function (){
-      let selTeddyMinus = localStorage.getItem("productsList");
-      // Récupération du tableau 
-      selTeddyMinus = JSON.parse(selTeddyMinus);
+  selQtyMin.onclick = function (){
+    let selTeddyMinus = localStorage.getItem("productsList");
+    // Récupération du tableau 
+    selTeddyMinus = JSON.parse(selTeddyMinus);
     
     // Réduit la quantité à chaque clic 
-    //selTeddyMinus[i].quantity--;
-    document.getElementById("teddy_qty").innerHTML = selTeddyMinus[i].quantity--;
+    selTeddyMinus[i].quantity--;
+    //document.getElementById("teddy_qty").innerHTML = selTeddyMinus[i].quantity--;
     location.reload();
 
     if(selTeddyMinus[i].quantity <= 0 ){
-        // Suppression de l'article
-        selTeddyMinus.splice(i,1);
+      // Suppression de l'article, évitera la quantité négative
+      selTeddyMinus.splice(i,1);
     }
         // Réecriture du tableau
         selTeddyMinus = JSON.stringify(selTeddyMinus);
         // Renvoi des données au localStorage
         localStorage.setItem("productsList", selTeddyMinus); 
     };
-  
-    // Fonction qui supprimera individuellement un article du panier
-    selQtyDel.onclick = function delItemCart(){
-      let removeElt = localStorage.getItem("productsList");
-      // Récupération du tableau articles
-      removeElt = JSON.parse(removeElt);
-      // Suppression de l'article
-      removeElt.splice(cart[i],1);
-      // Réecriture du tableau
-      removeElt = JSON.stringify(removeElt);
-      // Renvoi des données au localStorage 
-      localStorage.setItem("productsList", removeElt);
-      // Actualise la page dynamiquement
-      location.reload(); 
-    }
+
+      // Fonction qui supprimera individuellement un article du panier
+  selQtyDel.onclick = function delItemCart(){
+    let removeElt = localStorage.getItem("productsList");
+    // Récupération du tableau articles
+    removeElt = JSON.parse(removeElt);
+    // Suppression de l'article
+    removeElt.splice(cart[i],1);
+    // Réecriture du tableau
+    removeElt = JSON.stringify(removeElt);
+    // Renvoi des données au localStorage 
+    localStorage.setItem("productsList", removeElt);
+    // Actualise la page dynamiquement
+    location.reload(); 
+  }
+
     // Affichage du montant total du panier
     let totalPrice = document.getElementById('total_amount');
     let totalAmount = 0;
@@ -140,7 +134,6 @@ function displayCart (){
    totalPrice.innerText = "Le montant total de votre panier est de :   "  + totalAmount / 100 +  " €";
   }
 }
-  
   // Récupération des données du tableau
   let msgCart = JSON.parse(window.localStorage.getItem("productsList"));
   
@@ -148,6 +141,9 @@ function displayCart (){
   if(msgCart.length == 0){
   
     document.getElementById("msg_cart").innerHTML = "Votre panier est vide !";
+    document.getElementById("total_amount").style.width = "50%";
+    document.getElementById("total_amount").style.height = "0px";
+    document.getElementById("total_amount").style.paddingTop = "0px";
   
   } else {
   
