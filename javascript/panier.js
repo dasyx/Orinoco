@@ -141,7 +141,7 @@ function displayCart (){
   if(msgCart.length == 0){
   
     document.getElementById("msg_cart").innerHTML = "Votre panier est vide !";
-    document.getElementById("total_amount").style.width = "50%";
+    document.getElementById("total_amount").style.width = "20%";
     document.getElementById("total_amount").style.height = "0px";
     document.getElementById("total_amount").style.paddingTop = "0px";
   

@@ -405,7 +405,7 @@ header h1 {
 }
 
 #total_amount {
-  width: 95%;
+  width: 50%;
   height: 55px;
   padding-top: 10px;
   text-align: center;
@@ -433,6 +433,33 @@ header h1 {
   #empty_cart {
     margin-top: 15px;
   }
+}
+
+#val_button {
+  margin-bottom: 100px;
+}
+
+#display_form {
+  background-color: #f2e8f0;
+  box-shadow: 4px 0px 8px 5px #b6b2b280;
+  border: 2px solid #afaeae;
+  border-radius: 20px 20px;
+  padding: 20px;
+}
+
+#check_form {
+  display: flex;
+  flex-direction: column;
+}
+
+#check_form input {
+  margin: 10px;
+}
+
+#header_form {
+  visibility: hidden;
+  width: 100%;
+  margin-bottom: 50px;
 }
 
 main {
