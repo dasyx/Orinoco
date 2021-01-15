@@ -424,6 +424,7 @@ header h1 {
 }
 @media screen and (max-width: 449px) {
   #total_amount {
+    width: 95%;
     height: 40px;
     font-size: 12px;
   }
@@ -440,6 +441,7 @@ header h1 {
 }
 
 #display_form {
+  width: 50%;
   background-color: #f2e8f0;
   box-shadow: 4px 0px 8px 5px #b6b2b280;
   border: 2px solid #afaeae;
