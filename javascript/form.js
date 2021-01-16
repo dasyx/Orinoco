@@ -18,12 +18,14 @@ function valCart (){
     valButton.textContent = "Valider le panier";
 
     // Création d'une fonction qui rend invisible le bouton valider une fois cliqué
-    // Qui créera dans le même temps l'affichage du header formulaire
+    // Qui créera dans le même temps l'affichage du bandeau header & formulaire
     let headerForm = document.getElementById("header_form");
+    let formDisplay = document.getElementById("display_form");
 
     valButton.addEventListener("click", function () {
       valButton.style.visibility = "hidden";
       headerForm.style.visibility = "visible";
+      formDisplay.style.visibility = "visible";
     });
 
     valButton.onclick = function displayForm(){
@@ -32,18 +34,22 @@ function valCart (){
     let displayForm = document.getElementById("display_form");
     let selFormDisplay = document.createElement("section");
     let selForm = document.createElement("form");
+    let selFieldFormName = document.createElement("fieldset");
+    let selLegendName = document.createElement("legend");
     let selFormFirstNameLabel = document.createElement("label");
         selFormFirstNameLabel.htmlFor = "first_name";
     let selFormFirstNameInput = document.createElement("input");
     let selFormLastNameLabel = document.createElement("label");
         selFormLastNameLabel.htmlFor = "last_name";
     let selFormLastNameInput = document.createElement("input");
+    let selFieldFormAdress = document.createElement("fieldset");
+    let selLegendAdress = document.createElement("legend");
     let selFormMailLabel = document.createElement("label");
         selFormMailLabel.htmlFor = "mail";
     let selFormMail = document.createElement("input");
     let selFormAdressLabel = document.createElement("label");
-        selFormAdressLabel.htmlFor = "phone";
-    let selFormAdress = document.createElement("input");
+        selFormAdressLabel.htmlFor = "adress";
+    let selFormAdress = document.createElement("textarea");
     let selFormCityLabel = document.createElement("label");
         selFormCityLabel.htmlFor = "city";
     let selFormCity = document.createElement("input");
@@ -56,6 +62,8 @@ function valCart (){
 
     selForm.setAttribute("id", "check_form");
 
+    selFieldFormName.setAttribute("id", "fieldset_name");
+
     selFormFirstNameInput.setAttribute("id", "name");
     selFormFirstNameInput.setAttribute("type", "text");
     selFormFirstNameInput.setAttribute("name", "username");
@@ -66,13 +74,15 @@ function valCart (){
     selFormLastNameInput.setAttribute("name", "username");
     selFormLastNameInput.setAttribute("required", true);
 
+    selFieldFormAdress.setAttribute("id", "fieldset_adress");
+
     selFormMail.setAttribute("id", "mail");
     selFormMail.setAttribute("type", "email");
     selFormMail.setAttribute("name", "usermail");
     selFormMail.setAttribute("required", true);
 
     selFormAdress.setAttribute("id", "adress");
-    selFormAdress.setAttribute("type", "text");
+    selFormAdress.setAttribute("type", "textarea");
     selFormAdress.setAttribute("name", "adress");
     selFormAdress.setAttribute("required", true);
 
@@ -88,25 +98,31 @@ function valCart (){
     // Le formulaire et ses dépendances
     displayForm.appendChild(selFormDisplay);
     selFormDisplay.appendChild(selForm);
-    selForm.appendChild(selFormFirstNameLabel);
-    selForm.appendChild(selFormFirstNameInput);
-    selForm.appendChild(selFormLastNameLabel);
-    selForm.appendChild(selFormLastNameInput);
-    selForm.appendChild(selFormAdressLabel);
-    selForm.appendChild(selFormAdress);
-    selForm.appendChild(selFormCityLabel);
-    selForm.appendChild(selFormCity);
-    selForm.appendChild(selFormMailLabel);
-    selForm.appendChild(selFormMail);
+    selForm.appendChild(selFieldFormName);
+    selFieldFormName.appendChild(selLegendName);
+    selFieldFormName.appendChild(selFormFirstNameLabel);
+    selFieldFormName.appendChild(selFormFirstNameInput);
+    selFieldFormName.appendChild(selFormLastNameLabel);
+    selFieldFormName.appendChild(selFormLastNameInput);
+    selForm.appendChild(selFieldFormAdress);
+    selFieldFormAdress.appendChild(selLegendAdress);
+    selFieldFormAdress.appendChild(selFormAdressLabel);
+    selFieldFormAdress.appendChild(selFormAdress);
+    selFieldFormAdress.appendChild(selFormCityLabel);
+    selFieldFormAdress.appendChild(selFormCity);
+    selFieldFormAdress.appendChild(selFormMailLabel);
+    selFieldFormAdress.appendChild(selFormMail);
     displayForm.appendChild(selFormDisplayValid);
     selFormDisplayValid.appendChild(selFormValid);
 
     // Intégration du texte
-    selFormFirstNameLabel.textContent = "Votre prénom :";
-    selFormLastNameLabel.textContent = "Votre nom :";
-    selFormAdressLabel.textContent = "Votre adresse postale :";
-    selFormCityLabel.textContent = "Votre ville de résidence :";
-    selFormMailLabel.textContent = "Votre adresse email :";
+    selLegendName.textContent = "Qui êtes-vous ?";
+    selFormFirstNameLabel.textContent = "Prénom :";
+    selFormLastNameLabel.textContent = "Nom :";
+    selLegendAdress.textContent = "Vos coordonnées";
+    selFormAdressLabel.textContent = "Adresse postale :";
+    selFormCityLabel.textContent = "Ville de résidence :";
+    selFormMailLabel.textContent = "Adresse email :";
   }
 }
 // Récupération des données du tableau
