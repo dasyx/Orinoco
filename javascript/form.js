@@ -41,6 +41,7 @@ function valCart (){
     let selFormFirstNameLabel = document.createElement("label");
         selFormFirstNameLabel.htmlFor = "first_name";
     let selFormFirstNameInput = document.createElement("input");
+    let selFormFirstNameText = document.createElement("p");
     let selFormLastNameLabel = document.createElement("label");
         selFormLastNameLabel.htmlFor = "last_name";
     let selFormLastNameInput = document.createElement("input");
@@ -52,12 +53,15 @@ function valCart (){
     let selFormMailLabel = document.createElement("label");
         selFormMailLabel.htmlFor = "mail";
     let selFormMail = document.createElement("input");
+    let selFormMailText = document.createElement("p");
     let selFormAdressLabel = document.createElement("label");
         selFormAdressLabel.htmlFor = "adress";
     let selFormAdress = document.createElement("textarea");
+    let selFormAdressText = document.createElement("p");
     let selFormCityLabel = document.createElement("label");
         selFormCityLabel.htmlFor = "city";
     let selFormCity = document.createElement("input");
+    let selFormCityText = document.createElement("p");
 
 
     let selFieldFormValid = document.createElement("fieldset");
@@ -96,7 +100,7 @@ function valCart (){
     selFormMail.setAttribute("placeholder", "Saisissez votre adresse mail");
     selFormMail.setAttribute("required", "");
     selFormMail.setAttribute("pattern", "^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$");
-    selFormMail.setAttribute("id", "alert_mail_text");
+    selFormMailText.setAttribute("id", "alert_mail_text");
 
     selFormAdress.setAttribute("id", "adress");
     selFormAdress.setAttribute("type", "textarea");
@@ -104,6 +108,7 @@ function valCart (){
     selFormAdress.setAttribute("placeholder", "Saisissez votre adresse domicile");
     selFormAdress.setAttribute("required", "");
     selFormAdress.setAttribute("pattern", "^([0-9a-z'àâéèêôùûçÀÂÉÈÔÙÛÇ\s-]{1,50})$");
+    selFormAdressText.setAttribute("id", "alert_adress_text");
 
     selFormCity.setAttribute("id", "city");
     selFormCity.setAttribute("type", "text");
@@ -111,6 +116,7 @@ function valCart (){
     selFormCity.setAttribute("placeholder", "Saisissez votre ville de résidence");
     selFormCity.setAttribute("required", "");
     selFormCity.setAttribute("pattern", "^[[:alpha:]]([-' ]?[[:alpha:]])*$");
+    selFormCityText.setAttribute("id", "alert_city_text");
 
     selFieldFormValid.setAttribute("id", "fieldset_valid");
     selFormValid.setAttribute("id", "submit-btn");
