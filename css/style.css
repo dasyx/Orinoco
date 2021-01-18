@@ -343,7 +343,7 @@ header h1 {
 
 .select img {
   height: auto;
-  width: 400px;
+  width: 280px;
 }
 @media screen and (min-width: 320px) and (max-width: 1025px) {
   .select img {

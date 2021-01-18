@@ -66,6 +66,7 @@ function valCart (){
     // Ajout des attributs pour la section formulaire
 
     selForm.setAttribute("id", "check_form");
+    selForm.setAttribute("method", "POST");
 
     selFieldFormName.setAttribute("id", "fieldset_name");
 
@@ -74,13 +75,18 @@ function valCart (){
     selFormFirstNameInput.setAttribute("name", "username");
     selFormFirstNameInput.setAttribute("placeholder", "Saisissez votre prénom");
     selFormFirstNameInput.setAttribute("required", "");
-    selFormLastNameText.setAttribute("id", "alert_name_text");
+    selFormFirstNameInput.setAttribute("pattern", "/^[a-zA-Z ]+$/");
+    selFormFirstNameInput.setAttribute("min", "2");
+    selFormFirstNameText.setAttribute("id", "alert_firstname_text");
 
     selFormLastNameInput.setAttribute("id", "name");
     selFormLastNameInput.setAttribute("type", "text");
     selFormLastNameInput.setAttribute("name", "username");
     selFormLastNameInput.setAttribute("placeholder", "Saisissez votre nom de famille");
     selFormLastNameInput.setAttribute("required", "");
+    selFormLastNameInput.setAttribute("pattern", "/^[a-zA-Z ]+$/");
+    selFormLastNameInput.setAttribute("min", "2");
+    selFormLastNameText.setAttribute("id", "alert_lastname_text");
 
     selFieldFormAdress.setAttribute("id", "fieldset_adress");
 
@@ -89,18 +95,22 @@ function valCart (){
     selFormMail.setAttribute("name", "usermail");
     selFormMail.setAttribute("placeholder", "Saisissez votre adresse mail");
     selFormMail.setAttribute("required", "");
+    selFormMail.setAttribute("pattern", "^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$");
+    selFormMail.setAttribute("id", "alert_mail_text");
 
     selFormAdress.setAttribute("id", "adress");
     selFormAdress.setAttribute("type", "textarea");
     selFormAdress.setAttribute("name", "adress");
     selFormAdress.setAttribute("placeholder", "Saisissez votre adresse domicile");
     selFormAdress.setAttribute("required", "");
+    selFormAdress.setAttribute("pattern", "^([0-9a-z'àâéèêôùûçÀÂÉÈÔÙÛÇ\s-]{1,50})$");
 
     selFormCity.setAttribute("id", "city");
     selFormCity.setAttribute("type", "text");
     selFormCity.setAttribute("name", "city");
     selFormCity.setAttribute("placeholder", "Saisissez votre ville de résidence");
     selFormCity.setAttribute("required", "");
+    selFormCity.setAttribute("pattern", "^[[:alpha:]]([-' ]?[[:alpha:]])*$");
 
     selFieldFormValid.setAttribute("id", "fieldset_valid");
     selFormValid.setAttribute("id", "submit-btn");
