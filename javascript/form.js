@@ -57,7 +57,7 @@ function valCart (){
     let selFormMailText = document.createElement("p");
     let selFormAdressLabel = document.createElement("label");
         selFormAdressLabel.htmlFor = "adress";
-    let selFormAdress = document.createElement("textarea");
+    let selFormAdress = document.createElement("input");
     let selFormAdressText = document.createElement("p");
     let selFormCityLabel = document.createElement("label");
         selFormCityLabel.htmlFor = "city";
@@ -70,7 +70,7 @@ function valCart (){
 
     // Ajout des attributs pour la section formulaire
 
-    selForm.setAttribute("id", "check_form");
+    selForm.setAttribute("id", "form_order");
     selForm.setAttribute("name", "formProducts");
     //selForm.setAttribute("onsubmit", "return validate()");
 
@@ -80,7 +80,7 @@ function valCart (){
     selFormFirstNameInput.setAttribute("type", "text");
     selFormFirstNameInput.setAttribute("name", "username");
     selFormFirstNameInput.setAttribute("placeholder", "Saisissez votre prénom");
-    selFormFirstNameInput.setAttribute("pattern", "/^[a-zA-Z]+[a-zA-Z \é\è\-]+[a-zA-Z]$/");
+    //selFormFirstNameInput.setAttribute("pattern", "/^[a-zA-Z]+[a-zA-Z \é\è\-]+[a-zA-Z]$/");
     selFormFirstNameInput.setAttribute("required", "");
     //selFormFirstNameInput.setAttribute("min", "2");
     //selFormFirstNameInput.setAttribute("oninput", "checkInput(this)");
@@ -90,9 +90,9 @@ function valCart (){
     selFormLastNameInput.setAttribute("type", "text");
     selFormLastNameInput.setAttribute("name", "username");
     selFormLastNameInput.setAttribute("placeholder", "Saisissez votre nom de famille");
-    selFormLastNameInput.setAttribute("pattern", "/^[a-zA-Z]+[a-zA-Z \é\è\-]+[a-zA-Z]$/");
+    //selFormLastNameInput.setAttribute("pattern", "/^[a-zA-Z]+[a-zA-Z \é\è\-]+[a-zA-Z]$/");
     selFormLastNameInput.setAttribute("required", "");
-    //selFormLastNameInput.setAttribute("min", "2");
+    selFormLastNameInput.setAttribute("min", "2");
     selFormLastNameText.setAttribute("id", "alert_lastname_text");
 
     selFieldFormAdress.setAttribute("id", "fieldset_adress");
@@ -102,15 +102,15 @@ function valCart (){
     selFormMail.setAttribute("name", "usermail");
     selFormMail.setAttribute("placeholder", "Saisissez votre adresse mail");
     selFormMail.setAttribute("required", "");
-    selFormMail.setAttribute("pattern", "^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$");
+    //selFormMail.setAttribute("pattern", "^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$");
     selFormMailText.setAttribute("id", "alert_mail_text");
 
     selFormAdress.setAttribute("id", "adress");
-    selFormAdress.setAttribute("type", "textarea");
+    selFormAdress.setAttribute("type", "input");
     selFormAdress.setAttribute("name", "adress");
     selFormAdress.setAttribute("placeholder", "Saisissez votre adresse domicile");
     selFormAdress.setAttribute("required", "");
-    selFormAdress.setAttribute("pattern", "^([0-9a-z'àâéèêôùûçÀÂÉÈÔÙÛÇ\s-]{1,50})$");
+    //selFormAdress.setAttribute("pattern", "^([0-9a-z'àâéèêôùûçÀÂÉÈÔÙÛÇ\s-]{1,50})$");
     selFormAdressText.setAttribute("id", "alert_adress_text");
 
     selFormCity.setAttribute("id", "city");
@@ -118,14 +118,13 @@ function valCart (){
     selFormCity.setAttribute("name", "city");
     selFormCity.setAttribute("placeholder", "Saisissez votre ville de résidence");
     selFormCity.setAttribute("required", "");
-    selFormCity.setAttribute("pattern", "^[[:alpha:]]([-' ]?[[:alpha:]])*$");
+    //selFormCity.setAttribute("pattern", "^[[:alpha:]]([-' ]?[[:alpha:]])*$");
     selFormCityText.setAttribute("id", "alert_city_text");
 
     selFieldFormValid.setAttribute("id", "fieldset_valid");
     selFormValid.setAttribute("id", "submit-btn");
     selFormValid.setAttribute("type", "submit");
     //selFormValid.setAttribute("onsubmit", "return validate()");
-
 
     // Le formulaire et ses dépendances
     displayForm.appendChild(selForm);
@@ -155,6 +154,39 @@ function valCart (){
     selFormAdressLabel.textContent = "Adresse :";
     selFormCityLabel.textContent = "Ville :";
     selFormMailLabel.textContent = "Adresse email :";
+
+    // Récupèration du formulaire et écoute de l'événement "submit" puis envoi de la commande par la fonction "sendOrder"
+    selForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      //console.log("test");
+      sendOrder();
+    })
+
+  // Récupèration tous les input de la page, qui seront utilisés pour créer l'objet "contact"
+  let formInput = document.getElementsByTagName("input");
+
+function sendOrder() {
+  let contact = {
+    lastName : formInput[0].value,
+    firstName : formInput[1].value,
+    address: formInput[2].value,
+    city : formInput[3].value,
+    mail : formInput[4].value,
+  }
+  
+  // Récupération des informations du panier dans le localstorage
+  let cart = JSON.parse(window.localStorage.getItem("productsList"));
+
+  // Création d'un tableau qui contiendra les produits
+  let products = [];
+  cart.forEach(function(product){
+      products.push(product._id);
+  });
+
+  let orderData = {contact, products};
+  console.log(orderData);
+}
+
   }
 }
 // Récupération des données du tableau
@@ -170,18 +202,3 @@ if(displayForm.length == 0){
   valCart();
 
 }
-/*function formValid() {
-  return checkInput();
-}*/
-
-/*function checkInput(input) {
-
-  if(input.value == "/^[a-zA-Z]+[a-zA-Z \é\è\-]+[a-zA-Z]$/") {
-    document.getElementById("first_name").className = "valid";
-    return true;
-
-  } else if(input.value != "/^[a-zA-Z]+[a-zA-Z \é\è\-]+[a-zA-Z]$/") {
-    document.getElementById("first_name").className = "error";
-    return false;
-  } 
-}*/
