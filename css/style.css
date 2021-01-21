@@ -462,14 +462,14 @@ header h1 {
   }
 }
 
-#check_form {
+#form_order {
   display: flex;
   flex-direction: column;
   font-family: "Itim";
   font-size: 1.4em;
 }
 
-#check_form input {
+#form_order input {
   height: 30px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -503,12 +503,12 @@ input {
   }
 }
 
-#fieldset_name, #fieldset_adress {
+#fieldset_name, #fieldset_address {
   display: flex;
   flex-direction: column;
 }
 
-#fieldset_name legend, #fieldset_adress legend {
+#fieldset_name legend, #fieldset_address legend {
   padding: 5px;
   background-color: #8b54c7;
   color: #ffffff;
@@ -516,7 +516,7 @@ input {
   margin-bottom: 10px;
 }
 
-#fieldset_adress textarea {
+#fieldset_address textarea {
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 5px;

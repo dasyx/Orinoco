@@ -48,17 +48,17 @@ function valCart (){
     let selFormLastNameInput = document.createElement("input");
     let selFormLastNameText = document.createElement("p");
 
-    let selFieldFormAdress = document.createElement("fieldset");
-    let selLegendAdress = document.createElement("legend");
+    let selFieldFormAddress = document.createElement("fieldset");
+    let selLegendAddress = document.createElement("legend");
 
     let selFormMailLabel = document.createElement("label");
         selFormMailLabel.htmlFor = "mail";
     let selFormMail = document.createElement("input");
     let selFormMailText = document.createElement("p");
-    let selFormAdressLabel = document.createElement("label");
-        selFormAdressLabel.htmlFor = "adress";
-    let selFormAdress = document.createElement("input");
-    let selFormAdressText = document.createElement("p");
+    let selFormAddressLabel = document.createElement("label");
+        selFormAddressLabel.htmlFor = "address";
+    let selFormAddress = document.createElement("textarea");
+    let selFormAddressText = document.createElement("p");
     let selFormCityLabel = document.createElement("label");
         selFormCityLabel.htmlFor = "city";
     let selFormCity = document.createElement("input");
@@ -72,7 +72,7 @@ function valCart (){
 
     selForm.setAttribute("id", "form_order");
     selForm.setAttribute("name", "formProducts");
-    //selForm.setAttribute("onsubmit", "return validate()");
+    //selForm.setAttribute("onsubmit", "return check_name(name)");
 
     selFieldFormName.setAttribute("id", "fieldset_name");
 
@@ -81,9 +81,9 @@ function valCart (){
     selFormFirstNameInput.setAttribute("name", "username");
     selFormFirstNameInput.setAttribute("placeholder", "Saisissez votre prénom");
     //selFormFirstNameInput.setAttribute("pattern", "/^[a-zA-Z]+[a-zA-Z \é\è\-]+[a-zA-Z]$/");
-    selFormFirstNameInput.setAttribute("required", "");
+    //selFormFirstNameInput.setAttribute("required", "");
     //selFormFirstNameInput.setAttribute("min", "2");
-    //selFormFirstNameInput.setAttribute("oninput", "checkInput(this)");
+    //selFormFirstNameInput.setAttribute("onkeyup", "check_name(name)");
     selFormFirstNameText.setAttribute("id", "alert_firstname_text");
 
     selFormLastNameInput.setAttribute("id", "last_name");
@@ -95,7 +95,7 @@ function valCart (){
     selFormLastNameInput.setAttribute("min", "2");
     selFormLastNameText.setAttribute("id", "alert_lastname_text");
 
-    selFieldFormAdress.setAttribute("id", "fieldset_adress");
+    selFieldFormAddress.setAttribute("id", "fieldset_address");
 
     selFormMail.setAttribute("id", "mail");
     selFormMail.setAttribute("type", "email");
@@ -105,13 +105,13 @@ function valCart (){
     //selFormMail.setAttribute("pattern", "^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$");
     selFormMailText.setAttribute("id", "alert_mail_text");
 
-    selFormAdress.setAttribute("id", "adress");
-    selFormAdress.setAttribute("type", "input");
-    selFormAdress.setAttribute("name", "adress");
-    selFormAdress.setAttribute("placeholder", "Saisissez votre adresse domicile");
-    selFormAdress.setAttribute("required", "");
-    //selFormAdress.setAttribute("pattern", "^([0-9a-z'àâéèêôùûçÀÂÉÈÔÙÛÇ\s-]{1,50})$");
-    selFormAdressText.setAttribute("id", "alert_adress_text");
+    selFormAddress.setAttribute("id", "address");
+    selFormAddress.setAttribute("type", "text");
+    selFormAddress.setAttribute("name", "address");
+    selFormAddress.setAttribute("placeholder", "Saisissez votre adresse domicile");
+    selFormAddress.setAttribute("required", "");
+    //selFormAddress.setAttribute("pattern", "^([0-9a-z'àâéèêôùûçÀÂÉÈÔÙÛÇ\s-]{1,50})$");
+    selFormAddressText.setAttribute("id", "alert_address_text");
 
     selFormCity.setAttribute("id", "city");
     selFormCity.setAttribute("type", "text");
@@ -124,7 +124,6 @@ function valCart (){
     selFieldFormValid.setAttribute("id", "fieldset_valid");
     selFormValid.setAttribute("id", "submit-btn");
     selFormValid.setAttribute("type", "submit");
-    //selFormValid.setAttribute("onsubmit", "return validate()");
 
     // Le formulaire et ses dépendances
     displayForm.appendChild(selForm);
@@ -135,14 +134,14 @@ function valCart (){
     selFieldFormName.appendChild(selFormLastNameText);
     selFieldFormName.appendChild(selFormLastNameLabel);
     selFieldFormName.appendChild(selFormLastNameInput);
-    selForm.appendChild(selFieldFormAdress);
-    selFieldFormAdress.appendChild(selLegendAdress);
-    selFieldFormAdress.appendChild(selFormAdressLabel);
-    selFieldFormAdress.appendChild(selFormAdress);
-    selFieldFormAdress.appendChild(selFormCityLabel);
-    selFieldFormAdress.appendChild(selFormCity);
-    selFieldFormAdress.appendChild(selFormMailLabel);
-    selFieldFormAdress.appendChild(selFormMail);
+    selForm.appendChild(selFieldFormAddress);
+    selFieldFormAddress.appendChild(selLegendAddress);
+    selFieldFormAddress.appendChild(selFormAddressLabel);
+    selFieldFormAddress.appendChild(selFormAddress);
+    selFieldFormAddress.appendChild(selFormCityLabel);
+    selFieldFormAddress.appendChild(selFormCity);
+    selFieldFormAddress.appendChild(selFormMailLabel);
+    selFieldFormAddress.appendChild(selFormMail);
     selForm.appendChild(selFieldFormValid);
     selFieldFormValid.appendChild(selFormValid);
 
@@ -150,8 +149,8 @@ function valCart (){
     selLegendName.textContent = "Qui êtes-vous ?";
     selFormFirstNameLabel.textContent = "Prénom :";
     selFormLastNameLabel.textContent = "Nom :";
-    selLegendAdress.textContent = "Vos coordonnées";
-    selFormAdressLabel.textContent = "Adresse :";
+    selLegendAddress.textContent = "Vos coordonnées";
+    selFormAddressLabel.textContent = "Adresse :";
     selFormCityLabel.textContent = "Ville :";
     selFormMailLabel.textContent = "Adresse email :";
 
@@ -159,25 +158,27 @@ function valCart (){
     selForm.addEventListener("submit", function(e){
       e.preventDefault();
       //console.log("test");
+      check_name();
       sendOrder();
     })
 
   // Récupèration tous les input de la page, qui seront utilisés pour créer l'objet "contact"
   let formInput = document.getElementsByTagName("input");
+  let formTxtArea = document.getElementsByTagName("textarea");
 
 function sendOrder() {
   let contact = {
-    lastName : formInput[0].value,
-    firstName : formInput[1].value,
-    address: formInput[2].value,
-    city : formInput[3].value,
-    mail : formInput[4].value,
+    firstName : formInput[0].value,
+    lastName : formInput[1].value,
+    address: formTxtArea[0].value,
+    city : formInput[2].value,
+    mail : formInput[3].value,
   }
   
   // Récupération des informations du panier dans le localstorage
   let cart = JSON.parse(window.localStorage.getItem("productsList"));
 
-  // Création d'un tableau qui contiendra les produits
+  // Création d'un tableau qui contiendra les produits (avec les id à commander)
   let products = [];
   cart.forEach(function(product){
       products.push(product._id);
@@ -185,9 +186,26 @@ function sendOrder() {
 
   let orderData = {contact, products};
   console.log(orderData);
-}
 
+    }
   }
+}
+let checkName = document.getElementById("first_name");
+
+function check_name(){
+  console.log("test");
+  var regex = /^[a-zA-Z]+$/;///^[a-zA-Z]+[a-zA-Z \é\è\-]+[a-zA-Z]$/;
+    if(regex.test(checkName) === false){
+      alert("Wrong");
+      checkName.focus();
+      return false;
+    }
+    if(checkName === " "){
+      alert("Name Field cannot be left empty");
+      checkName.focus();
+      return false;
+    }
+    return true;
 }
 // Récupération des données du tableau
 let displayForm = JSON.parse(window.localStorage.getItem("productsList"));
