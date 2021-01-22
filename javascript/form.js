@@ -72,8 +72,109 @@ function valCart (){
 
     selForm.setAttribute("id", "form_order");
     selForm.setAttribute("name", "formProducts");
-    //selForm.setAttribute("onsubmit", "return check_name(name)");
+    
 
+    // Fonction qui vérifie la validité du champ de saisie "first name"
+    selFormFirstNameInput.oninput = function firstNameInput(){
+
+      var firstName = document.getElementById("first_name").value;
+
+      var nameRGEX = /^[a-zA-Z]+[a-zA-Z \é\è\-]+[a-zA-Z]$/;
+      var firstNameResult = nameRGEX.test(firstName);
+      
+
+      if(firstNameResult == false){
+        document.getElementById("first_name").className = "error";
+        document.getElementById("alert_firstname_text").textContent = "veuillez remplir ce champ correctement";
+        return false;
+      }
+      if(firstNameResult == true){
+        document.getElementById("first_name").className = "valid";
+        document.getElementById("alert_firstname_text").textContent = "cette valeur est valide";
+        return true;
+      }
+    }
+
+    // Fonction qui vérifie la validité du champ de saisie "last name"
+    selFormLastNameInput.oninput = function lastNameInput() {
+
+      var lastName = document.getElementById("last_name").value;
+
+      var nameRGEX = /^[a-zA-Z]+[a-zA-Z \é\è\-]+[a-zA-Z]$/;
+      var lastNameResult = nameRGEX.test(lastName);
+
+      if(lastNameResult == false){
+        document.getElementById("last_name").className = "error";
+        document.getElementById("alert_lastname_text").textContent = "veuillez remplir ce champ correctement";
+        return false;
+      }
+      if(lastNameResult == true){
+        document.getElementById("last_name").className = "valid";
+        document.getElementById("alert_lastname_text").textContent = "cette valeur est valide";
+        return true;
+      }
+    }
+
+    // Fonction qui vérifie la validité du champ de saisie "address"
+    selFormAddress.oninput = function adressInput() {
+
+      var addressInput = document.getElementById("address").value;
+
+      var addressRGEX = /^([0-9a-z'àâéèêôùûçÀÂÉÈÔÙÛÇ\s-]{1,50})$/;
+      var addressResult = addressRGEX.test(addressInput);
+
+      if(addressResult == false){
+        document.getElementById("address").className = "error";
+        document.getElementById("alert_address_text").textContent = "veuillez remplir ce champ correctement";
+        return false;
+      }
+      if(addressResult == true){
+        document.getElementById("address").className = "valid";
+        document.getElementById("alert_address_text").textContent = "cette valeur est valide";
+        return true;
+      }
+    }
+
+    // Fonction qui vérifie la validité du champ de saisie "city"
+    selFormCity.oninput = function cityInput() {
+
+      var cityInput = document.getElementById("city").value;
+
+      var cityRGEX = /^[A-Za-zÀ-ÿ\.'*`´’,\- "]{1,34}$/;
+      var cityResult = cityRGEX.test(cityInput);
+
+      if(cityResult == false){
+        document.getElementById("city").className = "error";
+        document.getElementById("alert_city_text").textContent = "veuillez remplir ce champ correctement";
+        return false;
+      }
+      if(cityResult == true){
+        document.getElementById("city").className = "valid";
+        document.getElementById("alert_city_text").textContent = "cette valeur est valide";
+        return true;
+      }
+    }
+
+    // Fonction qui vérifie la validité du champ de saisie "email"
+    selFormMail.oninput = function mailInput() {
+
+      var mailInput = document.getElementById("mail").value;
+
+      var mailRGEX = /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
+      var mailResult = mailRGEX.test(mailInput);
+
+      if(mailResult == false){
+        document.getElementById("mail").className = "error";
+        document.getElementById("alert_mail_text").textContent = "veuillez remplir ce champ correctement";
+        return false;
+      }
+      if(mailResult == true){
+        document.getElementById("mail").className = "valid";
+        document.getElementById("alert_mail_text").textContent = "cette valeur est valide";
+        return true;
+      }
+    }
+    
     selFieldFormName.setAttribute("id", "fieldset_name");
 
     selFormFirstNameInput.setAttribute("id", "first_name");
@@ -81,9 +182,7 @@ function valCart (){
     selFormFirstNameInput.setAttribute("name", "username");
     selFormFirstNameInput.setAttribute("placeholder", "Saisissez votre prénom");
     //selFormFirstNameInput.setAttribute("pattern", "/^[a-zA-Z]+[a-zA-Z \é\è\-]+[a-zA-Z]$/");
-    //selFormFirstNameInput.setAttribute("required", "");
-    //selFormFirstNameInput.setAttribute("min", "2");
-    //selFormFirstNameInput.setAttribute("onkeyup", "check_name(name)");
+    selFormFirstNameInput.setAttribute("required", "");
     selFormFirstNameText.setAttribute("id", "alert_firstname_text");
 
     selFormLastNameInput.setAttribute("id", "last_name");
@@ -92,7 +191,6 @@ function valCart (){
     selFormLastNameInput.setAttribute("placeholder", "Saisissez votre nom de famille");
     //selFormLastNameInput.setAttribute("pattern", "/^[a-zA-Z]+[a-zA-Z \é\è\-]+[a-zA-Z]$/");
     selFormLastNameInput.setAttribute("required", "");
-    selFormLastNameInput.setAttribute("min", "2");
     selFormLastNameText.setAttribute("id", "alert_lastname_text");
 
     selFieldFormAddress.setAttribute("id", "fieldset_address");
@@ -118,7 +216,7 @@ function valCart (){
     selFormCity.setAttribute("name", "city");
     selFormCity.setAttribute("placeholder", "Saisissez votre ville de résidence");
     selFormCity.setAttribute("required", "");
-    //selFormCity.setAttribute("pattern", "^[[:alpha:]]([-' ]?[[:alpha:]])*$");
+    //selFormCity.setAttribute("pattern", "^[A-Za-zÀ-ÿ\.'*`´’,\- "]{1,34}$");
     selFormCityText.setAttribute("id", "alert_city_text");
 
     selFieldFormValid.setAttribute("id", "fieldset_valid");
@@ -131,17 +229,21 @@ function valCart (){
     selFieldFormName.appendChild(selLegendName);
     selFieldFormName.appendChild(selFormFirstNameLabel);
     selFieldFormName.appendChild(selFormFirstNameInput);
-    selFieldFormName.appendChild(selFormLastNameText);
+    selFieldFormName.appendChild(selFormFirstNameText);
     selFieldFormName.appendChild(selFormLastNameLabel);
     selFieldFormName.appendChild(selFormLastNameInput);
+    selFieldFormName.appendChild(selFormLastNameText);
     selForm.appendChild(selFieldFormAddress);
     selFieldFormAddress.appendChild(selLegendAddress);
     selFieldFormAddress.appendChild(selFormAddressLabel);
     selFieldFormAddress.appendChild(selFormAddress);
+    selFieldFormAddress.appendChild(selFormAddressText);
     selFieldFormAddress.appendChild(selFormCityLabel);
     selFieldFormAddress.appendChild(selFormCity);
+    selFieldFormAddress.appendChild(selFormCityText);
     selFieldFormAddress.appendChild(selFormMailLabel);
     selFieldFormAddress.appendChild(selFormMail);
+    selFieldFormAddress.appendChild(selFormMailText);
     selForm.appendChild(selFieldFormValid);
     selFieldFormValid.appendChild(selFormValid);
 
@@ -158,7 +260,6 @@ function valCart (){
     selForm.addEventListener("submit", function(e){
       e.preventDefault();
       //console.log("test");
-      check_name();
       sendOrder();
     })
 
@@ -190,23 +291,7 @@ function sendOrder() {
     }
   }
 }
-let checkName = document.getElementById("first_name");
 
-function check_name(){
-  console.log("test");
-  var regex = /^[a-zA-Z]+$/;///^[a-zA-Z]+[a-zA-Z \é\è\-]+[a-zA-Z]$/;
-    if(regex.test(checkName) === false){
-      alert("Wrong");
-      checkName.focus();
-      return false;
-    }
-    if(checkName === " "){
-      alert("Name Field cannot be left empty");
-      checkName.focus();
-      return false;
-    }
-    return true;
-}
 // Récupération des données du tableau
 let displayForm = JSON.parse(window.localStorage.getItem("productsList"));
   
