@@ -525,13 +525,25 @@ input {
   resize: none;
 }
 
-#alert_name_text {
-  width: auto;
-  background-color: #ff0000;
-  color: #ffffff;
+#alert_firstname_text, #alert_lastname_text,
+#alert_address_text, #alert_city_text, #alert_mail_text {
+  width: 70%;
+  color: #ff0000;
   font-size: 0.8em;
-  font-weight: lighter;
   margin-bottom: 10px;
+  padding-left: 5px;
+}
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  #alert_firstname_text, #alert_lastname_text,
+#alert_address_text, #alert_city_text, #alert_mail_text {
+    font-size: 0.6em;
+  }
+}
+@media screen and (min-width: 426px) and (max-width: 1024px) {
+  #alert_firstname_text, #alert_lastname_text,
+#alert_address_text, #alert_city_text, #alert_mail_text {
+    font-size: 0.7em;
+  }
 }
 
 #fieldset_valid {
@@ -539,11 +551,25 @@ input {
 }
 
 .error {
-  border: 2px solid red;
+  border: 4px solid red;
 }
 
 .valid {
-  border: 2px solid green;
+  border: 4px solid green;
+}
+
+#wrong_input_fname {
+  display: flex;
+  visibility: hidden;
+  color: #ff0000;
+  font-size: 0.9em;
+}
+
+#wrong_input_lname {
+  display: flex;
+  visibility: hidden;
+  color: #ff0000;
+  font-size: 0.9em;
 }
 
 main {
