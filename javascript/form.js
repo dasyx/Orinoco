@@ -39,9 +39,14 @@ function valCart (){
     let selFieldFormName = document.createElement("fieldset");
     let selLegendName = document.createElement("legend");
 
+    // Intégration des icones font awesome
     let falseLogoFname = document.createElement("i");
     let falseLogoLname = document.createElement("i");
+    let falseLogoAddress = document.createElement("i");
+    let falseLogoCity = document.createElement("i");
+    let falseLogoMail = document.createElement("i");
 
+    // Intégration des différents champs input
     let selFormFirstNameLabel = document.createElement("label");
         selFormFirstNameLabel.htmlFor = "first_name";
     let selFormFirstNameInput = document.createElement("input");
@@ -67,128 +72,29 @@ function valCart (){
     let selFormCity = document.createElement("input");
     let selFormCityText = document.createElement("p");
 
-
+    // Création du bouton de validation du formulaire
     let selFieldFormValid = document.createElement("fieldset");
     let selFormValid = document.createElement("input");
 
     // Ajout des attributs pour la section formulaire
-
     selForm.setAttribute("id", "form_order");
     selForm.setAttribute("name", "formProducts");
     
-
-    // Fonction qui vérifie la validité du champ de saisie "first name"
-    selFormFirstNameInput.oninput = function firstNameInput(){
-
-      var firstName = document.getElementById("first_name").value;
-
-      var nameRGEX = /^[a-zA-Z]+[a-zA-Z \é\è\-]+[a-zA-Z]$/;
-      var firstNameResult = nameRGEX.test(firstName);
-      
-
-      if(firstNameResult == false){
-        document.getElementById("first_name").className = "error";
-        document.getElementById("wrong_input_fname").style.visibility = "visible";
-        document.getElementById("alert_firstname_text").textContent = "Champ obligatoire";
-        return false;
-      }
-      if(firstNameResult == true){
-        document.getElementById("first_name").className = "valid";
-        document.getElementById("wrong_input_fname").style.visibility = "hidden";
-        document.getElementById("alert_firstname_text").textContent = "";
-        return true;
-      }
-    }
-
-    // Fonction qui vérifie la validité du champ de saisie "last name"
-    selFormLastNameInput.oninput = function lastNameInput() {
-
-      var lastName = document.getElementById("last_name").value;
-
-      var nameRGEX = /^[a-zA-Z]+[a-zA-Z \é\è\-]+[a-zA-Z]$/;
-      var lastNameResult = nameRGEX.test(lastName);
-
-      if(lastNameResult == false){
-        document.getElementById("last_name").className = "error";
-        document.getElementById("wrong_input_lname").style.visibility = "visible";
-        document.getElementById("alert_lastname_text").textContent = "Champ obligatoire";
-        return false;
-      }
-      if(lastNameResult == true){
-        document.getElementById("last_name").className = "valid";
-        document.getElementById("wrong_input_lname").style.visibility = "hidden";
-        document.getElementById("alert_lastname_text").textContent = "";
-        return true;
-      }
-    }
-
-    // Fonction qui vérifie la validité du champ de saisie "address"
-    selFormAddress.oninput = function adressInput() {
-
-      var addressInput = document.getElementById("address").value;
-
-      var addressRGEX = /^([0-9a-z'àâéèêôùûçÀÂÉÈÔÙÛÇ\s-]{1,50})$/;
-      var addressResult = addressRGEX.test(addressInput);
-
-      if(addressResult == false){
-        document.getElementById("address").className = "error";
-        document.getElementById("alert_address_text").textContent = "Champ obligatoire";
-        return false;
-      }
-      if(addressResult == true){
-        document.getElementById("address").className = "valid";
-        document.getElementById("alert_address_text").textContent = "";
-        return true;
-      }
-    }
-
-    // Fonction qui vérifie la validité du champ de saisie "city"
-    selFormCity.oninput = function cityInput() {
-
-      var cityInput = document.getElementById("city").value;
-
-      var cityRGEX = /^[A-Za-zÀ-ÿ\.'*`´’,\- "]{1,34}$/;
-      var cityResult = cityRGEX.test(cityInput);
-
-      if(cityResult == false){
-        document.getElementById("city").className = "error";
-        document.getElementById("alert_city_text").textContent = "Champ obligatoire";
-        return false;
-      }
-      if(cityResult == true){
-        document.getElementById("city").className = "valid";
-        document.getElementById("alert_city_text").textContent = "";
-        return true;
-      }
-    }
-
-    // Fonction qui vérifie la validité du champ de saisie "email"
-    selFormMail.oninput = function mailInput() {
-
-      var mailInput = document.getElementById("mail").value;
-
-      var mailRGEX = /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
-      var mailResult = mailRGEX.test(mailInput);
-
-      if(mailResult == false){
-        document.getElementById("mail").className = "error";
-        document.getElementById("alert_mail_text").textContent = "Champ obligatoire";
-        return false;
-      }
-      if(mailResult == true){
-        document.getElementById("mail").className = "valid";
-        document.getElementById("alert_mail_text").textContent = "";
-        return true;
-      }
-    }
-    
     selFieldFormName.setAttribute("id", "fieldset_name");
 
+    // Ajout des attributs pour les fonts
     falseLogoFname.setAttribute("class", "fas fa-times-circle");
     falseLogoFname.setAttribute("id", "wrong_input_fname");
     falseLogoLname.setAttribute("class", "fas fa-times-circle");
     falseLogoLname.setAttribute("id", "wrong_input_lname");
+    falseLogoAddress.setAttribute("class", "fas fa-times-circle");
+    falseLogoAddress.setAttribute("id", "wrong_input_address");
+    falseLogoCity.setAttribute("class", "fas fa-times-circle");
+    falseLogoCity.setAttribute("id", "wrong_input_city");
+    falseLogoMail.setAttribute("class", "fas fa-times-circle");
+    falseLogoMail.setAttribute("id", "wrong_input_mail");
 
+    // Ajout des attributs pour les inputs du formulaire
     selFormFirstNameInput.setAttribute("id", "first_name");
     selFormFirstNameInput.setAttribute("type", "text");
     selFormFirstNameInput.setAttribute("name", "username");
@@ -246,13 +152,16 @@ function valCart (){
     selFieldFormAddress.appendChild(selLegendAddress);
     selFieldFormAddress.appendChild(selFormAddressLabel);
     selFieldFormAddress.appendChild(selFormAddress);
-    selFieldFormAddress.appendChild(selFormAddressText);
+    selFieldFormAddress.appendChild(falseLogoAddress);
+    falseLogoAddress.appendChild(selFormAddressText);
     selFieldFormAddress.appendChild(selFormCityLabel);
     selFieldFormAddress.appendChild(selFormCity);
-    selFieldFormAddress.appendChild(selFormCityText);
+    selFieldFormAddress.appendChild(falseLogoCity);
+    falseLogoCity.appendChild(selFormCityText);
     selFieldFormAddress.appendChild(selFormMailLabel);
     selFieldFormAddress.appendChild(selFormMail);
-    selFieldFormAddress.appendChild(selFormMailText);
+    selFieldFormAddress.appendChild(falseLogoMail);
+    falseLogoMail.appendChild(selFormMailText);
     selForm.appendChild(selFieldFormValid);
     selFieldFormValid.appendChild(selFormValid);
 
@@ -264,6 +173,117 @@ function valCart (){
     selFormAddressLabel.textContent = "Adresse :";
     selFormCityLabel.textContent = "Ville :";
     selFormMailLabel.textContent = "Adresse email :";
+
+    // Fonction qui vérifie la validité du champ de saisie "first name"
+    selFormFirstNameInput.oninput = function firstNameInput(){
+
+      var firstName = document.getElementById("first_name").value;
+
+      var nameRGEX = /^[a-zA-Z]+[a-zA-Z \é\è\-]+[a-zA-Z]$/;
+      var firstNameResult = nameRGEX.test(firstName);
+      
+
+      if(firstNameResult == false){
+        document.getElementById("first_name").className = "error";
+        document.getElementById("wrong_input_fname").style.visibility = "visible";
+        document.getElementById("alert_firstname_text").textContent = "Champ obligatoire/invalide";
+        return false;
+      }
+      if(firstNameResult == true){
+        document.getElementById("first_name").className = "valid";
+        document.getElementById("wrong_input_fname").style.visibility = "hidden";
+        document.getElementById("alert_firstname_text").textContent = "";
+        return true;
+      }
+    }
+
+    // Fonction qui vérifie la validité du champ de saisie "last name"
+    selFormLastNameInput.oninput = function lastNameInput() {
+
+      var lastName = document.getElementById("last_name").value;
+
+      var nameRGEX = /^[a-zA-Z]+[a-zA-Z \é\è\-]+[a-zA-Z]$/;
+      var lastNameResult = nameRGEX.test(lastName);
+
+      if(lastNameResult == false){
+        document.getElementById("last_name").className = "error";
+        document.getElementById("wrong_input_lname").style.visibility = "visible";
+        document.getElementById("alert_lastname_text").textContent = "Champ obligatoire/invalide";
+        return false;
+      }
+      if(lastNameResult == true){
+        document.getElementById("last_name").className = "valid";
+        document.getElementById("wrong_input_lname").style.visibility = "hidden";
+        document.getElementById("alert_lastname_text").textContent = "";
+        return true;
+      }
+    }
+
+    // Fonction qui vérifie la validité du champ de saisie "address"
+    selFormAddress.oninput = function addressInput() {
+
+      var addressInput = document.getElementById("address").value;
+
+      var addressRGEX = /^([0-9a-z'àâéèêôùûçÀÂÉÈÔÙÛÇ\s-]{1,50})$/;
+      var addressResult = addressRGEX.test(addressInput);
+
+      if(addressResult == false){
+        document.getElementById("address").className = "error";
+        document.getElementById("wrong_input_address").style.visibility = "visible";
+        document.getElementById("alert_address_text").textContent = "Champ obligatoire/invalide";
+        return false;
+      }
+      if(addressResult == true){
+        document.getElementById("address").className = "valid";
+        document.getElementById("wrong_input_address").style.visibility = "hidden";
+        document.getElementById("alert_address_text").textContent = "";
+        return true;
+      }
+    }
+
+    // Fonction qui vérifie la validité du champ de saisie "city"
+    selFormCity.oninput = function cityInput() {
+
+      var cityInput = document.getElementById("city").value;
+
+      var cityRGEX = /^[A-Za-zÀ-ÿ\.'*`´’,\- "]{1,34}$/;
+      var cityResult = cityRGEX.test(cityInput);
+
+      if(cityResult == false){
+        document.getElementById("city").className = "error";
+        document.getElementById("wrong_input_city").style.visibility = "visible";
+        document.getElementById("alert_city_text").textContent = "Champ obligatoire/invalide";
+        return false;
+      }
+      if(cityResult == true){
+        document.getElementById("city").className = "valid";
+        document.getElementById("wrong_input_city").style.visibility = "hidden";
+        document.getElementById("alert_city_text").textContent = "";
+        return true;
+      }
+    }
+
+    // Fonction qui vérifie la validité du champ de saisie "email"
+    selFormMail.oninput = function mailInput() {
+
+      var mailInput = document.getElementById("mail").value;
+
+      var mailRGEX = /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
+      var mailResult = mailRGEX.test(mailInput);
+
+      if(mailResult == false){
+        document.getElementById("mail").className = "error";
+        document.getElementById("wrong_input_mail").style.visibility = "visible";
+        document.getElementById("alert_mail_text").textContent = "Champ obligatoire/invalide";
+        return false;
+      }
+      if(mailResult == true){
+        document.getElementById("mail").className = "valid";
+        document.getElementById("wrong_input_mail").style.visibility = "hidden";
+        document.getElementById("alert_mail_text").textContent = "";
+        return true;
+      }
+    }
 
     // Récupèration du formulaire et écoute de l'événement "submit" puis envoi de la commande par la fonction "sendOrder"
     selForm.addEventListener("submit", function(e){
