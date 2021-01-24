@@ -72,6 +72,8 @@ function valCart (){
     let selFormCity = document.createElement("input");
     let selFormCityText = document.createElement("p");
 
+    let selFormOblig = document.createElement("p");
+
     // Création du bouton de validation du formulaire
     let selFieldFormValid = document.createElement("fieldset");
     let selFormValid = document.createElement("input");
@@ -132,11 +134,13 @@ function valCart (){
     selFormCity.setAttribute("required", "");
     selFormCityText.setAttribute("id", "alert_city_text");
 
+    selFormOblig.setAttribute("class", "input_oblig");
+
     selFieldFormValid.setAttribute("id", "fieldset_valid");
     selFormValid.setAttribute("id", "submit-btn");
     selFormValid.setAttribute("type", "submit");
 
-    // Le formulaire et ses dépendances
+    // Le formulaire et ses dépendances/filiations
     displayForm.appendChild(selForm);
     selForm.appendChild(selFieldFormName);
     selFieldFormName.appendChild(selLegendName);
@@ -162,17 +166,19 @@ function valCart (){
     selFieldFormAddress.appendChild(selFormMail);
     selFieldFormAddress.appendChild(falseLogoMail);
     falseLogoMail.appendChild(selFormMailText);
+    selFieldFormAddress.appendChild(selFormOblig);
     selForm.appendChild(selFieldFormValid);
     selFieldFormValid.appendChild(selFormValid);
 
     // Intégration du texte
     selLegendName.textContent = "Qui êtes-vous ?";
-    selFormFirstNameLabel.textContent = "Prénom :";
-    selFormLastNameLabel.textContent = "Nom :";
+    selFormFirstNameLabel.textContent = "Prénom (*):";
+    selFormLastNameLabel.textContent = "Nom (*):";
     selLegendAddress.textContent = "Vos coordonnées";
-    selFormAddressLabel.textContent = "Adresse :";
-    selFormCityLabel.textContent = "Ville :";
-    selFormMailLabel.textContent = "Adresse email :";
+    selFormAddressLabel.textContent = "Adresse (*):";
+    selFormCityLabel.textContent = "Ville (*):";
+    selFormMailLabel.textContent = "Adresse email (*):";
+    selFormOblig.textContent = "(*) Champ obligatoire";
 
     // Fonction qui vérifie la validité du champ de saisie "first name"
     selFormFirstNameInput.oninput = function firstNameInput(){
@@ -186,7 +192,7 @@ function valCart (){
       if(firstNameResult == false){
         document.getElementById("first_name").className = "error";
         document.getElementById("wrong_input_fname").style.visibility = "visible";
-        document.getElementById("alert_firstname_text").textContent = "Champ obligatoire/invalide";
+        document.getElementById("alert_firstname_text").textContent = "Champ non valide/à remplir";
         return false;
       }
       if(firstNameResult == true){
@@ -208,7 +214,7 @@ function valCart (){
       if(lastNameResult == false){
         document.getElementById("last_name").className = "error";
         document.getElementById("wrong_input_lname").style.visibility = "visible";
-        document.getElementById("alert_lastname_text").textContent = "Champ obligatoire/invalide";
+        document.getElementById("alert_lastname_text").textContent = "Champ non valide/à remplir";
         return false;
       }
       if(lastNameResult == true){
@@ -224,13 +230,13 @@ function valCart (){
 
       var addressInput = document.getElementById("address").value;
 
-      var addressRGEX = /^([0-9a-z'àâéèêôùûçÀÂÉÈÔÙÛÇ\s-]{1,50})$/;
+      var addressRGEX = /^([0-9,a-zA-Z 'àâéèêôùûçÀÂÉÈÔÙÛÇ\s-]{1,50})$/;
       var addressResult = addressRGEX.test(addressInput);
 
       if(addressResult == false){
         document.getElementById("address").className = "error";
         document.getElementById("wrong_input_address").style.visibility = "visible";
-        document.getElementById("alert_address_text").textContent = "Champ obligatoire/invalide";
+        document.getElementById("alert_address_text").textContent = "Champ non valide/à remplir";
         return false;
       }
       if(addressResult == true){
@@ -252,7 +258,7 @@ function valCart (){
       if(cityResult == false){
         document.getElementById("city").className = "error";
         document.getElementById("wrong_input_city").style.visibility = "visible";
-        document.getElementById("alert_city_text").textContent = "Champ obligatoire/invalide";
+        document.getElementById("alert_city_text").textContent = "Champ non valide/à remplir";
         return false;
       }
       if(cityResult == true){
@@ -274,7 +280,7 @@ function valCart (){
       if(mailResult == false){
         document.getElementById("mail").className = "error";
         document.getElementById("wrong_input_mail").style.visibility = "visible";
-        document.getElementById("alert_mail_text").textContent = "Champ obligatoire/invalide";
+        document.getElementById("alert_mail_text").textContent = "Champ non valide/à remplir";
         return false;
       }
       if(mailResult == true){
@@ -319,6 +325,8 @@ function sendOrder() {
 
     }
   }
+  // Travail sur la requête POST
+  //request('POST', 'http://localhost:3000/api/cameras/order'
 }
 
 // Récupération des données du tableau

@@ -69,12 +69,6 @@ input {
     overflow-y: scroll;
     resize: none;
 }
-
-#alert_firstname_text, #alert_lastname_text,
-#alert_address_text, #alert_city_text, #alert_mail_text{
-    @include errMsg;
-}
-
 #fieldset_valid {
     text-align: center;
 }
@@ -84,8 +78,16 @@ input {
 .valid {
     border: 4px solid green;
 }
+.input_oblig {
+    font-size: .7em;
+    font-weight: lighter;
+}
 #wrong_input_fname, #wrong_input_lname,
 #wrong_input_address, #wrong_input_city,
 #wrong_input_mail {
     @include logoFalse;
+}
+#alert_firstname_text, #alert_lastname_text,
+#alert_address_text, #alert_city_text, #alert_mail_text{
+    @include errMsg;
 }
