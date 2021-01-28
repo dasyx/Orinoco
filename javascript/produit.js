@@ -2,7 +2,7 @@
 const params = new URLSearchParams(window.location.search);
 const idTeddy = params.get("id");
 
-getAllBears(url + idTeddy)
+dataRequest(url + idTeddy)
 
   .then (response => {
   // Création de l'affichage selon les données du produit

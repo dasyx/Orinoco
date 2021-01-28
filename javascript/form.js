@@ -290,43 +290,63 @@ function valCart (){
         return true;
       }
     }
-
-    // Récupèration du formulaire et écoute de l'événement "submit" puis envoi de la commande par la fonction "sendOrder"
-    selForm.addEventListener("submit", function(e){
-      e.preventDefault();
-      //console.log("test");
-      sendOrder();
-    })
-
-  // Récupèration tous les input de la page, qui seront utilisés pour créer l'objet "contact"
+  // Récupèration tous les inputs de la page, qui seront utilisés pour créer l'objet "contact"
   let formInput = document.getElementsByTagName("input");
   let formTxtArea = document.getElementsByTagName("textarea");
 
-function sendOrder() {
-  let contact = {
-    firstName : formInput[0].value,
-    lastName : formInput[1].value,
-    address: formTxtArea[0].value,
-    city : formInput[2].value,
-    mail : formInput[3].value,
-  }
+    // Récupèration du formulaire et écoute de l'événement "submit" puis envoi de la commande par la fonction "sendOrder"
+    selForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        //console.log("test");
+        sendOrder();
+      })
+
+    function sendOrder() {
+      let contact = {
+        firstName : formInput[0].value,
+        lastName : formInput[1].value,
+        address: formTxtArea[0].value,
+        city : formInput[2].value,
+        mail : formInput[3].value,
+      }
   
-  // Récupération des informations du panier dans le localstorage
-  let cart = JSON.parse(window.localStorage.getItem("productsList"));
+      // Récupération des informations du panier dans le localstorage
+      let cart = JSON.parse(window.localStorage.getItem("productsList"));
 
-  // Création d'un tableau qui contiendra les produits (avec les id à commander)
-  let products = [];
-  cart.forEach(function(product){
-      products.push(product._id);
-  });
+      // Création d'un tableau qui contiendra les produits (avec les id à commander)
+      let products = [];
+      cart.forEach(function(product){
+          products.push(product._id);
+      });
 
-  let orderData = {contact, products};
-  console.log(orderData);
+      let orderData = {contact, products};
+      console.log(orderData);
 
+      //const sendURL = "http://localhost:3000/api/teddies/order";
+
+      /*let fetchData = {
+          method: "POST",
+          headers: {
+            "Accept" : "application/json",
+            "Content-Type": "application/json; charset=UTF-8"},
+          body: JSON.stringify(orderData)
+      }*/
+      
+      fetch("http://localhost:3000/api/teddies/order", {
+      method: "POST",
+      body: JSON.stringify(orderData),
+      headers: {"Content-Type": "application/json"}
+      })
+        .then(response => response.json())
+          //console.log(response);
+          /*let orderId = res.orderId;
+          localStorage.clear(); // Commande pour vider le panier pour les futures commandes
+          localStorage.setItem("orderId", orderId); // Stockage de l'Id de la commande
+          //localStorage.setItem("totalPrice", totalPrice); // Prix total de la commande
+          //window.open("confirmation.html"); // Redirection vers la page de confirmation*/
+        .catch(err => console.log(err));
     }
   }
-  // Travail sur la requête POST
-  //request('POST', 'http://localhost:3000/api/cameras/order'
 }
 
 // Récupération des données du tableau

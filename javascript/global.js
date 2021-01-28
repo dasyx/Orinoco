@@ -1,19 +1,3 @@
-// URL de l'API
-const url = "http://localhost:3000/api/teddies/";
-
-function getAllBears(url){
-    return new Promise((resolve) => {
-      let request = new XMLHttpRequest();
-      request.open('GET', url);
-      request.send();
-      request.onreadystatechange = function () {
-        if (this.readyState == XMLHttpRequest.DONE && this.status >= 200) {
-          resolve(JSON.parse(this.responseText));
-          console.log("fonction OK");
-        }
-      }
-    })
-  }
 // Création de la fonction qui affichera tous les oursons sous forme de liste sur la page index.html
 function displayProduct(teddy){
 

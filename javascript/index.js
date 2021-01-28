@@ -1,4 +1,4 @@
-getAllBears(url)
+dataRequest(url)
   .then (teddies => {
    
     teddies.forEach((teddy) => {
