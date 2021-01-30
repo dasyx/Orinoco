@@ -75,7 +75,7 @@ function valCart (){
     let selFormOblig = document.createElement("p");
 
     // Création du bouton de validation du formulaire
-    let selFieldFormValid = document.createElement("fieldset");
+    //let selFieldFormValid = document.createElement("fieldset");
     let selFormValid = document.createElement("input");
 
     // Ajout des attributs pour la section formulaire
@@ -136,7 +136,7 @@ function valCart (){
 
     selFormOblig.setAttribute("class", "input_oblig");
 
-    selFieldFormValid.setAttribute("id", "fieldset_valid");
+    //selFieldFormValid.setAttribute("id", "fieldset_valid");
     selFormValid.setAttribute("id", "submit-btn");
     selFormValid.setAttribute("type", "submit");
 
@@ -167,8 +167,7 @@ function valCart (){
     selFieldFormAddress.appendChild(falseLogoMail);
     falseLogoMail.appendChild(selFormMailText);
     selFieldFormAddress.appendChild(selFormOblig);
-    selForm.appendChild(selFieldFormValid);
-    selFieldFormValid.appendChild(selFormValid);
+    selForm.appendChild(selFormValid);
 
     // Intégration du texte
     selLegendName.textContent = "Qui êtes-vous ?";
@@ -293,61 +292,59 @@ function valCart (){
   // Récupèration tous les inputs de la page, qui seront utilisés pour créer l'objet "contact"
   let formInput = document.getElementsByTagName("input");
   let formTxtArea = document.getElementsByTagName("textarea");
+  let formOrder = document.getElementById("form_order"); // On récupère le formulaire
 
     // Récupèration du formulaire et écoute de l'événement "submit" puis envoi de la commande par la fonction "sendOrder"
-    selForm.addEventListener("submit", (e) => {
+    formOrder.addEventListener("submit", function(e){
         e.preventDefault();
         //console.log("test");
-        sendOrder();
-      })
+    });
+    document.getElementById("submit-btn").addEventListener("click", function(){ // A l'envoi
 
-    function sendOrder() {
-      let contact = {
-        firstName : formInput[0].value,
-        lastName : formInput[1].value,
-        address: formTxtArea[0].value,
-        city : formInput[2].value,
-        mail : formInput[3].value,
-      }
+        if(selForm.checkValidity()){
+          let contact = {
+            firstName : formInput[0].value,
+            lastName : formInput[1].value,
+            address: formTxtArea[0].value,
+            city : formInput[2].value,
+            mail : formInput[3].value,
+          }
   
-      // Récupération des informations du panier dans le localstorage
-      let cart = JSON.parse(window.localStorage.getItem("productsList"));
+          // Récupération des informations du panier dans le localstorage
+          let cart = JSON.parse(window.localStorage.getItem("productsList"));
 
-      // Création d'un tableau qui contiendra les produits (avec les id à commander)
-      let products = [];
-      cart.forEach(function(product){
-          products.push(product._id);
-      });
+          // Création d'un tableau qui contiendra les produits (avec les id à commander)
+          let products = [];
+          cart.forEach(function(product){
+              products.push(product._id);
+          });
 
-      let orderData = {contact, products};
-      console.log(orderData);
+          let orderData = {contact, products};
+          console.log(orderData);
 
-      //const sendURL = "http://localhost:3000/api/teddies/order";
+          //const sendURL = "http://localhost:3000/api/teddies/order";
 
-      /*let fetchData = {
-          method: "POST",
-          headers: {
-            "Accept" : "application/json",
-            "Content-Type": "application/json; charset=UTF-8"},
-          body: JSON.stringify(orderData)
-      }*/
-      
-      fetch("http://localhost:3000/api/teddies/order", {
-      method: "POST",
-      body: JSON.stringify(orderData),
-      headers: {"Content-Type": "application/json"}
-      })
-        .then(response => response.json())
-          //console.log(response);
-          /*let orderId = res.orderId;
-          localStorage.clear(); // Commande pour vider le panier pour les futures commandes
-          localStorage.setItem("orderId", orderId); // Stockage de l'Id de la commande
-          //localStorage.setItem("totalPrice", totalPrice); // Prix total de la commande
-          //window.open("confirmation.html"); // Redirection vers la page de confirmation*/
-        .catch(err => console.log(err));
-    }
-  }
-}
+          let fetchData = {
+            //url: "http://localhost:3000/api/teddies/order",
+            //mode: 'cors',
+            type: "POST",
+            headers: {'Content-Type': 'application/json'},
+            data: JSON.stringify(orderData)
+          };
+                
+          fetch("http://localhost:3000/api/teddies/", fetchData)
+            .then(function(response){
+              console.log(response);
+                let orderId = response.orderId;
+                localStorage.clear(); // Commande pour vider le panier pour les futures commandes
+                localStorage.setItem("orderId", orderId); // Stockage de l'Id de la commande
+            //localStorage.setItem("total_amount", totalAmount); // Prix total de la commande
+            //window.open("confirmation.html"); // Redirection vers la page de confirmation
+          });
+          //.catch(function(error)){}  
+        }
+    });
+}}
 
 // Récupération des données du tableau
 let displayForm = JSON.parse(window.localStorage.getItem("productsList"));
