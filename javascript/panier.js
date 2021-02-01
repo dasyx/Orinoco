@@ -130,10 +130,13 @@ function displayCart (){
    for(let i = 0; i<cart.length; i++){
 
       totalAmount += cart[i].price * cart[i].quantity;
+      localStorage.setItem("totalAmount", totalAmount / 100 + " €");
    }
    totalPrice.innerText = "Le montant total de votre panier est de :   "  + totalAmount / 100 +  " €";
+   
   }
 }
+
   // Récupération des données du tableau
   let msgCart = JSON.parse(window.localStorage.getItem("productsList"));
   

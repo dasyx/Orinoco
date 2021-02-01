@@ -337,19 +337,17 @@ function valCart (){
             })
             .then(data => { 
                 console.log(data);
-
+                //console.log(localStorage.getItem("totalAmount"));
                 let orderId = data.orderId;
-                console.log(orderId);
-                localStorage.clear(); // Commande pour vider le panier pour les futures commandes
-                localStorage.setItem("orderId", orderId); // Stockage de l'Id de la commande
-                let totalSum = document.getElementById('total_amount');
-                localStorage.setItem("total_amount", totalSum); // Prix total de la commande
-                //window.open("confirmation.html"); // Redirection vers la page de confirmation
-              }
+                localStorage.setItem("orderId", orderId);// Stockage de l'Id de la commande   
+            })
+            .then(() => {
+                let totalAmount = localStorage.getItem("totalAmount");
+                localStorage.setItem("totalAmount", totalAmount);
+                console.log(totalAmount);
+            })
               //return Promise.reject(response);
-            )
             .catch(err => console.log(err));
-          
         }
     });
 }}
