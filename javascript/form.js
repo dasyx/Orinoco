@@ -324,19 +324,28 @@ function valCart (){
           let orderData = {contact, products};
           console.log(orderData);
 
-          fetch('http://localhost:3000/api/teddies/order', {
-              method: 'POST',
-              body: JSON.stringify(orderData),
-              headers: {
-                  'Content-type': 'application/json; charset=UTF-8'
-                }
-              })
-              .then(response => {
-              if (response.status === 201) {
-              (console.log("test ok"))//window.location.href = 'confirmation.html')
-              }     
-          })
-              .catch(err => console.log(err));
+        fetch('http://localhost:3000/api/teddies/order', {
+            method: 'POST',
+            body: JSON.stringify(orderData),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+              }
+            })
+            .then(response => {
+              if (response.ok) {
+                let orderId = response.orderId;
+                localStorage.clear(); // Commande pour vider le panier pour les futures commandes
+                localStorage.setItem("orderId", orderId); // Stockage de l'Id de la commande
+                let totalSum = document.getElementById('total_amount');
+                localStorage.setItem("total_amount", totalSum); // Prix total de la commande
+                //window.open("confirmation.html"); // Redirection vers la page de confirmation
+              }
+              return Promise.reject(response);
+            })
+            .then(function (data) {
+                console.log(data);
+            })
+            .catch(err => console.log(err));
           
         }
     });
