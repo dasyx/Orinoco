@@ -80,7 +80,7 @@ function valCart (){
 
     // Ajout des attributs pour la section formulaire
     selForm.setAttribute("id", "form_order");
-    selForm.setAttribute("name", "formProducts");
+    selForm.setAttribute("method", "post");
     
     selFieldFormName.setAttribute("id", "fieldset_name");
 
@@ -292,22 +292,24 @@ function valCart (){
   // Récupèration tous les inputs de la page, qui seront utilisés pour créer l'objet "contact"
   let formInput = document.getElementsByTagName("input");
   let formTxtArea = document.getElementsByTagName("textarea");
-  let formOrder = document.getElementById("form_order"); // On récupère le formulaire
 
-    // Récupèration du formulaire et écoute de l'événement "submit" puis envoi de la commande par la fonction "sendOrder"
+    // Récupèration du formulaire et écoute de l'événement "submit"
+    let formOrder = document.getElementById("form_order");
+
     formOrder.addEventListener("submit", function(e){
         e.preventDefault();
         //console.log("test");
     });
+    
     document.getElementById("submit-btn").addEventListener("click", function(){ // A l'envoi
 
-        if(selForm.checkValidity()){
+        if(formOrder.checkValidity()){
           let contact = {
             firstName : formInput[0].value,
             lastName : formInput[1].value,
             address: formTxtArea[0].value,
             city : formInput[2].value,
-            mail : formInput[3].value,
+            email : formInput[3].value,
           }
   
           // Récupération des informations du panier dans le localstorage
@@ -322,26 +324,20 @@ function valCart (){
           let orderData = {contact, products};
           console.log(orderData);
 
-          //const sendURL = "http://localhost:3000/api/teddies/order";
-
-          let fetchData = {
-            //url: "http://localhost:3000/api/teddies/order",
-            //mode: 'cors',
-            type: "POST",
-            headers: {'Content-Type': 'application/json'},
-            data: JSON.stringify(orderData)
-          };
-                
-          fetch("http://localhost:3000/api/teddies/", fetchData)
-            .then(function(response){
-              console.log(response);
-                let orderId = response.orderId;
-                localStorage.clear(); // Commande pour vider le panier pour les futures commandes
-                localStorage.setItem("orderId", orderId); // Stockage de l'Id de la commande
-            //localStorage.setItem("total_amount", totalAmount); // Prix total de la commande
-            //window.open("confirmation.html"); // Redirection vers la page de confirmation
-          });
-          //.catch(function(error)){}  
+          fetch('http://localhost:3000/api/teddies/order', {
+              method: 'POST',
+              body: JSON.stringify(orderData),
+              headers: {
+                  'Content-type': 'application/json; charset=UTF-8'
+                }
+              })
+              .then(response => {
+              if (response.status === 201) {
+              (console.log("test ok"))//window.location.href = 'confirmation.html')
+              }     
+          })
+              .catch(err => console.log(err));
+          
         }
     });
 }}
