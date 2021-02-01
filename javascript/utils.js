@@ -6,7 +6,7 @@ hover.addEventListener('mouseover', mouseOver);
 hover.addEventListener('mouseout', mouseOut);
 
 function mouseOver(){
-  bearPrint.textContent = "Cliquez sur le bouton 'Ajoutez-moi' pour sélectionner l'ourson"
+  bearPrint.textContent = "Cliquez sur le bouton 'Choisissez-moi' pour sélectionner l'ourson"
 }
 function mouseOut(){
   bearPrint.textContent = ""

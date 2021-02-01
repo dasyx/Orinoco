@@ -124,6 +124,13 @@ header h1 {
   font-family: "Merienda", sans-serif;
 }
 
+#select {
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(to right, #c28a46, #e6b376, #cc8a78, #ce6ba8, #c367ad, #8b54c7);
+  font-family: "Merienda", sans-serif;
+}
+
 .produit {
   display: flex;
   flex-direction: column;

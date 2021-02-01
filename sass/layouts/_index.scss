@@ -17,6 +17,12 @@
     background: $orinoco_gradient;
     font-family: "Merienda", sans-serif;
 }
+#select {
+    text-align: center;
+    color: #fff;
+    background: $orinoco_gradient;
+    font-family: "Merienda", sans-serif;
+}
 .produit {
     @include flexOurs;
     background-color: #fff;
