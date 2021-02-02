@@ -337,7 +337,6 @@ function valCart (){
             })
             .then(data => { 
                 console.log(data);
-                //console.log(localStorage.getItem("totalAmount"));
                 let orderId = data.orderId;
                 localStorage.setItem("orderId", orderId);// Stockage de l'Id de la commande   
             })
@@ -345,6 +344,7 @@ function valCart (){
                 let totalAmount = localStorage.getItem("totalAmount");
                 localStorage.setItem("totalAmount", totalAmount);
                 console.log(totalAmount);
+                window.open("confirmation.html"); // Redirection vers la page de confirmation
             })
               //return Promise.reject(response);
             .catch(err => console.log(err));

@@ -579,6 +579,18 @@ input {
   }
 }
 
+#msg_body {
+  display: flex;
+  flex-direction: column;
+  line-height: 5em;
+  align-items: center;
+  background-color: #fff;
+  border: 2px solid black;
+  border-radius: 20px 20px;
+  margin-bottom: 60px;
+  padding: 30px;
+}
+
 main {
   display: flex;
   flex-direction: column;
