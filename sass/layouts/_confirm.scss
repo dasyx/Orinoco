@@ -1,11 +1,22 @@
+#confirm_msg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
 #msg_body {
     display: flex;
     flex-direction: column;
     line-height: 5em;
+    text-align: center;
     align-items: center;
     background-color: #fff;
     border: 2px solid black;
     border-radius: 20px 20px;
     margin-bottom: 60px;
     padding: 30px;
+}
+#home_button {
+    line-height: 2em;
+    width: 50%;
 }

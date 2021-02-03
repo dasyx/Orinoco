@@ -345,6 +345,7 @@ function valCart (){
                 localStorage.setItem("totalAmount", totalAmount);
                 console.log(totalAmount);
                 window.open("confirmation.html"); // Redirection vers la page de confirmation
+                
             })
               //return Promise.reject(response);
             .catch(err => console.log(err));
