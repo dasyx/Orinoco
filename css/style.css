@@ -579,7 +579,7 @@ input {
   }
 }
 
-#confirm_msg {
+#confirm_msg, #confirm_msg_lowRes {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -604,6 +604,24 @@ input {
   width: 50%;
 }
 
+@media screen and (max-width: 768px) {
+  #confirm_msg {
+    display: none;
+  }
+
+  #confirm_msg_lowRes {
+    display: flex;
+  }
+}
+@media screen and (min-width: 768px) {
+  #confirm_msg {
+    display: flex;
+  }
+
+  #confirm_msg_lowRes {
+    display: none;
+  }
+}
 main {
   display: flex;
   flex-direction: column;
