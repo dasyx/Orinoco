@@ -20,9 +20,8 @@ function displayProduct(teddy){
     prodName.setAttribute("class", "produit_name");
     prodPrice.setAttribute("class", "produit_price");
     prodLink.setAttribute("href", "produit.html?id=" + teddy._id);
-    prodLink.onclick = function storeData(){
+    prodLink.onclick = function storeData(){ //Ajoutera un teddy au localStorage, choisi par l'utilisateur
       window.localStorage.setItem("teddyDetails", JSON.stringify(teddy));
-      //window.open("produit.html?id=" + teddy._id, "_self");
     };
 
     // Agencement des éléments de la page index.html

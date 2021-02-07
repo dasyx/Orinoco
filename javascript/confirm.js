@@ -90,6 +90,7 @@ function displayConfirm () {
   valOrderId.textContent = "Votre commande "  + orderId + " sera traitée d'ici peu";
   valOrderAmount.textContent = "Le montant total de la commande est de " + totalAmount;
   homeButton.textContent = "Passer une nouvelle commande";
+
 }
 // Lancement de la fonction de retour à la page d'accueil au clic
 function backHome(){
@@ -103,6 +104,7 @@ let confirmMsg = document.getElementById("confirm_msg");
 let confirmMsgLowRes = document.getElementById("confirm_msg_lowRes");
   
 // Condition qui affichera ou non le message de confirmation de commande
+// En fonction de la quantité dans le localStorage et de la résolution d'affichage
 if(displayValConfirm.length == 0){
 
   document.getElementById("confirm_msg").style.display = "none";
