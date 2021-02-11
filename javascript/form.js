@@ -346,18 +346,18 @@ function valCart (){
               }
             })
             .then(response => {
-                //console.log(response);
+                console.log(response);
                 return response.json();
             })
             .then(data => { 
-                //console.log(data);
+                console.log(data);
                 let orderId = data.orderId;
                 localStorage.setItem("orderId", orderId);// Stockage de l'Id de la commande   
             })
             .then(() => {
                 let totalAmount = localStorage.getItem("totalAmount");
                 localStorage.setItem("totalAmount", totalAmount);
-                //console.log(totalAmount);
+                console.log(totalAmount);
                 window.open("confirmation.html"); // Redirection vers la page de confirmation
                 
             })

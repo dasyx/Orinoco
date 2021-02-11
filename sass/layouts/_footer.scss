@@ -12,24 +12,32 @@ footer {
     border-top: 2px solid black;
     font-family: $orinoco_font_main;
 }
-.foot__gauche {
-    &:hover {
-    /*ci-dessous la mixin du tremblement des éléments du footer*/
-    }
-}
-.foot__droite {
-    &:hover {
-    /*ci-dessous la mixin du tremblement des éléments du footer*/
-    }
-}
 
 .foot__gauche, .foot__droite {
+    display: inline-flex;
+
     margin: 0.3em 1.5em;
     text-decoration: none;
     color: $orinoco_color_alt;
 }
+.list {
+    display: none;
+
+}
+.list a {
+    text-decoration: none;
+    color: $orinoco_color_alt;
+}
+.foot__gauche:hover > .list {
+    display: inline-flex;
+}
+    
 @media screen and (max-width: 450px) {
     footer {
         flex-direction: column;
     }
+}
+.social {
+    text-align: center;
+    margin: 10px;
 }
