@@ -52,14 +52,12 @@
     font-size: large;
 }
 .choix_ajout_panier a {
-    margin-top: 30px;
-    padding: 12px 24px;
-    color: #fff;
-    text-decoration: none;
-    background-color: #8b54c7;
+    @include bouton_product;
 }
 #btn_cart {
     text-align: center;
+    font-family: "Merienda", cursive;
+    @include bouton_product;
 }
 #cart_mess {
     padding : 10px;

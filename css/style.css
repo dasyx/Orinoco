@@ -334,6 +334,12 @@ header h1 {
 
 #btn_cart {
   text-align: center;
+  font-family: "Merienda", cursive;
+  margin-top: 30px;
+  padding: 12px 24px;
+  color: #fff;
+  text-decoration: none;
+  background-color: #8b54c7;
 }
 
 #cart_mess {
@@ -460,6 +466,12 @@ header h1 {
 
 #val_button {
   margin-bottom: 100px;
+  font-family: "Merienda", cursive;
+  margin-top: 30px;
+  padding: 12px 24px;
+  color: #fff;
+  text-decoration: none;
+  background-color: #8b54c7;
 }
 
 #display_form {

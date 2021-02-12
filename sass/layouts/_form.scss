@@ -1,5 +1,7 @@
 #val_button {
     margin-bottom: 100px;
+    font-family: "Merienda", cursive;
+    @include bouton_product;
 }
 #display_form {
     visibility: hidden;
