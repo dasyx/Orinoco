@@ -104,6 +104,10 @@ header a {
   font-family: "Finger Paint", cursive;
 }
 
+header i {
+  margin: 10px;
+}
+
 header h1 {
   font-weight: 900;
   margin: 0;
