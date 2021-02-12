@@ -10,7 +10,7 @@ function displayConfirmMsg() {
 
     document.getElementById("confirm_msg").style.display = "none";
     document.getElementById("confirm_msg_lowRes").style.display = "none";
-
+  
   } if (confirmMsg.style.display = "none" && displayValConfirm.length > 0) {
 
     displayConfirm_lowRes();
