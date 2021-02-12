@@ -66,6 +66,19 @@ footer {
 @media screen and (max-width: 450px) {
   footer {
     flex-direction: column;
+    height: 150px;
+  }
+
+  .foot__gauche h3 {
+    display: none;
+  }
+
+  .foot__droite {
+    margin-bottom: 10px;
+  }
+
+  .list {
+    display: inline-flex;
   }
 }
 .social {
@@ -223,6 +236,8 @@ header h1 {
   color: #fff;
   text-decoration: none;
   background-color: #8b54c7;
+  font-family: "Merienda", cursive;
+  font-size: 1em;
 }
 
 .teddy_list {
@@ -330,16 +345,19 @@ header h1 {
   color: #fff;
   text-decoration: none;
   background-color: #8b54c7;
+  font-family: "Merienda", cursive;
+  font-size: 1em;
 }
 
 #btn_cart {
   text-align: center;
-  font-family: "Merienda", cursive;
   margin-top: 30px;
   padding: 12px 24px;
   color: #fff;
   text-decoration: none;
   background-color: #8b54c7;
+  font-family: "Merienda", cursive;
+  font-size: 1em;
 }
 
 #cart_mess {
@@ -466,12 +484,13 @@ header h1 {
 
 #val_button {
   margin-bottom: 100px;
-  font-family: "Merienda", cursive;
   margin-top: 30px;
   padding: 12px 24px;
   color: #fff;
   text-decoration: none;
   background-color: #8b54c7;
+  font-family: "Merienda", cursive;
+  font-size: 1em;
 }
 
 #display_form {
@@ -627,8 +646,16 @@ input {
 }
 
 #home_button {
+  margin-bottom: 20px;
   line-height: 2em;
   width: 50%;
+  margin-top: 30px;
+  padding: 12px 24px;
+  color: #fff;
+  text-decoration: none;
+  background-color: #8b54c7;
+  font-family: "Merienda", cursive;
+  font-size: 1em;
 }
 
 @media screen and (max-width: 768px) {
@@ -639,6 +666,10 @@ input {
   #confirm_msg_lowRes {
     display: flex;
   }
+
+  #home_button {
+    width: 100%;
+  }
 }
 @media screen and (min-width: 768px) {
   #confirm_msg {
@@ -647,6 +678,10 @@ input {
 
   #confirm_msg_lowRes {
     display: none;
+  }
+
+  #home_button {
+    width: 50%;
   }
 }
 main {

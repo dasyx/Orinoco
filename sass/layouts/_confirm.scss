@@ -18,8 +18,10 @@
     padding: 30px;
 }
 #home_button {
+    margin-bottom: 20px;
     line-height: 2em;
     width: 50%;
+    @include bouton_style;
 }
 @media screen and (max-width: 768px) {
     #confirm_msg {
@@ -28,6 +30,9 @@
     #confirm_msg_lowRes {
         display: flex;
     }
+    #home_button {
+        width: 100%;
+    }
 }
 @media screen and (min-width: 768px) {
     #confirm_msg {
@@ -35,5 +40,8 @@
     }
     #confirm_msg_lowRes {
         display: none;
+    }
+    #home_button {
+        width: 50%;
     }
 }

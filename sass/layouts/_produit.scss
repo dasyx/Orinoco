@@ -52,12 +52,11 @@
     font-size: large;
 }
 .choix_ajout_panier a {
-    @include bouton_product;
+    @include bouton_style;
 }
 #btn_cart {
     text-align: center;
-    font-family: "Merienda", cursive;
-    @include bouton_product;
+    @include bouton_style;
 }
 #cart_mess {
     padding : 10px;

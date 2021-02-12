@@ -60,7 +60,7 @@
     padding-bottom: 50px;
 }
 .produit_description a {
-    @include bouton_product;
+    @include bouton_style;
 }
 .teddy_list {
     display: flex;

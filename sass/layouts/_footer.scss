@@ -35,6 +35,16 @@ footer {
 @media screen and (max-width: 450px) {
     footer {
         flex-direction: column;
+        height: 150px;
+    }
+    .foot__gauche h3 {
+        display: none;
+    }
+    .foot__droite {
+        margin-bottom: 10px;
+    }
+    .list {
+        display: inline-flex;
     }
 }
 .social {
