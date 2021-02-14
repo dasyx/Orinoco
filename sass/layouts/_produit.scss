@@ -15,7 +15,7 @@
     width: 400px;
     overflow: hidden;
     @media screen and (min-width: 320px) and (max-width: 1025px) {
-        width: 270px;
+        width: 180px;
     }
     @media screen and (min-width: 1025px) and (max-width: 2560px) {
         transition: .3s;
@@ -41,15 +41,23 @@
     -webkit-text-fill-color: transparent;
     font-size: 1.5em;
 }
+.choix_illustration {
+    margin-top: 20px;
+}
 .choix_description p {
     padding-bottom: 20px;
 }
 .choix_couleur {
     margin-bottom: 50px;
+    text-align: center;
 }
 .choix_couleur label {
     margin-right: 20px;
     font-size: large;
+}
+#choix_option {
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
 .choix_ajout_panier a {
     @include bouton_style;
