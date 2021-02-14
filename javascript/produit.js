@@ -7,6 +7,5 @@ dataRequest(url + idTeddy)
   .then (response => {
   // Création de l'affichage selon les données du produit
       productChoice(response);
-})
-
-    
+  })
+  .catch (error => {console.log(error);});

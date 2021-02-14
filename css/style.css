@@ -176,7 +176,7 @@ header h1 {
 @media screen and (min-width: 320px) and (max-width: 425px) {
   .produit {
     width: 300px;
-    height: 540px;
+    height: 600px;
   }
 }
 @media screen and (min-width: 426px) and (max-width: 1024px) {
@@ -188,7 +188,7 @@ header h1 {
 @media screen and (min-width: 1025px) and (max-width: 2560px) {
   .produit {
     width: 560px;
-    height: 700px;
+    height: 740px;
   }
 }
 
@@ -269,7 +269,7 @@ header h1 {
 @media screen and (min-width: 320px) and (max-width: 425px) {
   .choix {
     width: 300px;
-    height: 540px;
+    height: 600px;
   }
 }
 @media screen and (min-width: 426px) and (max-width: 1024px) {
@@ -281,7 +281,7 @@ header h1 {
 @media screen and (min-width: 1025px) and (max-width: 2560px) {
   .choix {
     width: 560px;
-    height: 700px;
+    height: 740px;
   }
 }
 
@@ -374,6 +374,11 @@ header h1 {
   padding: 10px;
   font-weight: bolder;
 }
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  #cart_mess {
+    font-size: 0.8em;
+  }
+}
 
 #cart {
   width: 90%;
@@ -441,6 +446,11 @@ header h1 {
 .return_main {
   margin-top: 50px;
   margin-bottom: 50px;
+}
+@media screen and (min-width: 320px) and (max-width: 1025px) {
+  .return_main {
+    margin-bottom: 100px;
+  }
 }
 
 .btnQty_container {
