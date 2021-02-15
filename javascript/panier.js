@@ -143,7 +143,7 @@ function displayCart (){
   }
 
     // Affichage du montant total du panier
-    let totalPrice = document.getElementById('total_amount');
+    let totalPrice = document.getElementById("total_amount");
     let totalAmount = 0;
 
    for(let i = 0; i<cart.length; i++){

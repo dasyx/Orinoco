@@ -54,6 +54,12 @@
         margin-bottom: 100px;
     }
 }
+.return_back {
+    margin-bottom: 50px;
+    @media screen and (min-width: 320px) and (max-width: 1025px) {
+        margin-bottom: 100px;
+    }
+}
 .btnQty_container {
     display: flex;
     padding: 5px;
