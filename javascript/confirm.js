@@ -1,6 +1,6 @@
 function displayConfirmMsg() {
     // Récupération des données du tableau
-    let displayValConfirm = (window.localStorage.getItem("orderId"));
+    let displayValConfirm = window.localStorage.getItem("orderId");
     let confirmMsg = document.getElementById("confirm_msg");
     let confirmMsgLowRes = document.getElementById("confirm_msg_lowRes");
   
