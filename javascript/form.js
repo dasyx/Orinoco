@@ -358,10 +358,20 @@ function valCart (){
                 let totalAmount = localStorage.getItem("totalAmount");
                 localStorage.setItem("totalAmount", totalAmount);
                 console.log(totalAmount);
-                window.open("confirmation.html"); // Redirection vers la page de confirmation
-                
             })
-            .catch(err => console.log(err));
+            .then((error) => {
+			         if([200, 201].indexOf(this.status) !== false){
+                    window.open("confirmation.html"); // Redirection vers la page de confirmation
+                } else {
+                    //console.log("Une erreur inconnue est survenue");
+                    let formError = document.getElementById("form_valid_error")
+				            let divAlert = document.createElement("div");
+				            divAlert.setAttribute("class", "alert_msg");
+				            divAlert.setAttribute("id", "alertErrorMsg");
+                    formError.appendChild(divAlert);
+				            divAlert.textContent = "Désolé, un problème sur la commande est survenu, veuillez retenter plus tard !"
+                }
+		        });
         }
     });
 }}
