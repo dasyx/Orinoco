@@ -92,3 +92,17 @@ input {
 #alert_address_text, #alert_city_text, #alert_mail_text{
     @include errMsg;
 }
+.alert_msg {
+    display: flex;
+    flex: 1 auto;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border: 2px solid #000000;
+    border-radius: 20px 20px;
+    margin-bottom: 60px;
+    padding: 32px;
+    font-family: 'Itim';
+    font-size: 1.4em;
+    color: #ff0000;
+}

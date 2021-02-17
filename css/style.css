@@ -654,6 +654,21 @@ input {
   }
 }
 
+.alert_msg {
+  display: flex;
+  flex: 1 auto;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border: 2px solid #000000;
+  border-radius: 20px 20px;
+  margin-bottom: 60px;
+  padding: 32px;
+  font-family: "Itim";
+  font-size: 1.4em;
+  color: #ff0000;
+}
+
 #confirm_msg, #confirm_msg_lowRes {
   display: flex;
   flex-direction: column;
