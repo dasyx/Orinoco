@@ -323,7 +323,7 @@ function valCart (){
             lastName : formInput[1].value,
             address: formTxtArea[0].value,
             city : formInput[2].value,
-            mail : formInput[3].value,
+            email : formInput[3].value,
           }
   
           // Récupération des informations du panier dans le localstorage
@@ -358,21 +358,14 @@ function valCart (){
                 let totalAmount = localStorage.getItem("totalAmount");
                 localStorage.setItem("totalAmount", totalAmount);
                 console.log(totalAmount);
-            })
-            .then(function()  {
-              if([201].indexOf(this.status) == 201){
-                console.log("test ok");
-                //window.open("confirmation.html"); // Redirection vers la page de confirmation
-              } else {
-                console.log("Une erreur inconnue est survenue");
-                /*let formError = document.getElementById("form_valid_error")
-                let divAlert = document.createElement("div");
-                divAlert.setAttribute("class", "alert_msg");
-                divAlert.setAttribute("id", "alertErrorMsg");
-                formError.appendChild(divAlert);
-                divAlert.textContent = "Un problème est survenu, veuillez retenter plus tard !"*/
-              }
-		      });
+                window.open("confirmation.html");
+            });
+              /*let formError = document.getElementById("form_valid_error")
+              let divAlert = document.createElement("div");
+              divAlert.setAttribute("class", "alert_msg");
+              divAlert.setAttribute("id", "alertErrorMsg");
+              formError.appendChild(divAlert);
+              divAlert.textContent = "Un problème est survenu, veuillez retenter plus tard !"*/
         }
     });
 }}
