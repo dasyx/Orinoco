@@ -346,26 +346,31 @@ function valCart (){
               }
             })
             .then(response => {
-                console.log(response);
-                return response.json();
+              console.log(response);
+              return response.json();
             })
-            .then(data => { 
-                console.log(data);
+            .then(function(data){
+              // Va renvoyer la commande avec le total vers la page de confirmation
                 let orderId = data.orderId;
-                localStorage.setItem("orderId", orderId);// Stockage de l'Id de la commande   
+                localStorage.setItem("orderId", orderId);
+                let amount = localStorage.getItem("totalAmount");
+                localStorage.setItem("totalAmount", amount);
+                console.log(orderId);
+                console.log(amount);
+                window.open("confirmation.html"); // Redirige vers la page de confirmation
             })
-            .then(() => {
-                let totalAmount = localStorage.getItem("totalAmount");
-                localStorage.setItem("totalAmount", totalAmount);
-                console.log(totalAmount);
-                window.open("confirmation.html");
+            // Avec le bloc catch on va pouvoir gérer une erreur et informer l'utilisateur
+            .catch(function(error) {
+                console.log("erreur");
+                if(document.getElementById("alertErrorMsg") === null){
+                  let formError = document.getElementById("form_valid_error")
+                  let divAlert = document.createElement("div");
+                  divAlert.setAttribute("class", "alert_msg");
+                  divAlert.setAttribute("id", "alertErrorMsg");
+                  formError.appendChild(divAlert);
+                  divAlert.textContent = "Un problème est survenu, veuillez retenter plus tard !"
+                }
             });
-              /*let formError = document.getElementById("form_valid_error")
-              let divAlert = document.createElement("div");
-              divAlert.setAttribute("class", "alert_msg");
-              divAlert.setAttribute("id", "alertErrorMsg");
-              formError.appendChild(divAlert);
-              divAlert.textContent = "Un problème est survenu, veuillez retenter plus tard !"*/
         }
     });
 }}
